@@ -7,15 +7,16 @@ from PyQt5.QtWidgets import QDialog, QApplication, QTableWidget, QHeaderView
 class MainWindow(QDialog):
     def __init__(self):
         super(MainWindow, self).__init__()
-        self.employees = []
         loadUi("EmployeesGUI.ui", self)
-
         self.loadData()
+
+        # Used to connect sorting box to sort by the selected option
+        self.sortComboBox.currentIndexChanged.connect(self.sort_employees)
 
     def loadData(self):
         # Fake Data
         self.employees = [
-            {"id": 1000, "name": "EmploeeyA", "position": "CEO", "salary": 50000},
+            {"id": 9000, "name": "EmploeeyZ", "position": "CEO", "salary": 50000},
             {"id": 1001, "name": "EmploeeyB", "position": "CFO", "salary": 30000},
             {"id": 1002, "name": "EmploeeyC", "position": "CFO", "salary": 20000},
             {"id": 1003, "name": "EmploeeyD", "position": "CFO", "salary": 10000},
@@ -27,6 +28,21 @@ class MainWindow(QDialog):
             {"id": 1009, "name": "EmploeeyK", "position": "CFO", "salary": 7000},
             {"id": 1010, "name": "EmploeeyL", "position": "CFO", "salary": 9000},
         ]
+        self.display_employees()
+
+    def sort_employees(self, index):
+        if index == 0:  # Sort by ID
+            self.employees.sort(key=lambda x: x["id"])
+        elif index == 1:  # Sort by Name
+            print(len(self.employees))
+            self.employees.sort(key=lambda x: x['name'])
+            print(len(self.employees))
+        elif index == 2:  # Sort by Salary: High to Low
+            self.employees.sort(key=lambda x: x['salary'], reverse=True)
+        elif index == 3:  # Sort by Salary: Low to High
+            self.employees.sort(key=lambda x: x['salary'])
+
+        # Used to update the displayed employees
         self.display_employees()
 
     def display_employees(self):
