@@ -7,13 +7,14 @@ from PyQt5.QtWidgets import QDialog, QApplication, QTableWidget, QHeaderView
 class MainWindow(QDialog):
     def __init__(self):
         super(MainWindow, self).__init__()
+        self.employees = []
         loadUi("EmployeesGUI.ui", self)
 
         self.loadData()
 
     def loadData(self):
         # Fake Data
-        people = [
+        self.employees = [
             {"id": 1000, "name": "EmploeeyA", "position": "CEO", "salary": 50000},
             {"id": 1001, "name": "EmploeeyB", "position": "CFO", "salary": 30000},
             {"id": 1002, "name": "EmploeeyC", "position": "CFO", "salary": 20000},
@@ -26,17 +27,22 @@ class MainWindow(QDialog):
             {"id": 1009, "name": "EmploeeyK", "position": "CFO", "salary": 7000},
             {"id": 1010, "name": "EmploeeyL", "position": "CFO", "salary": 9000},
         ]
+        self.display_employees()
+
+    def display_employees(self):
         row = 0
-        self.tableWidget.setRowCount(len(people))
-        for person in people:
+        self.tableWidget.setRowCount(len(self.employees))
+        for employee in self.employees:
             self.tableWidget.setItem(row, 0,
-                                     QtWidgets.QTableWidgetItem(str(person["id"])))
+                                     QtWidgets.QTableWidgetItem(
+                                         str(employee["id"])))
             self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(
-                str(person["name"])))
+                str(employee["name"])))
             self.tableWidget.setItem(row, 2,
-                                     QtWidgets.QTableWidgetItem(person["position"]))
+                                     QtWidgets.QTableWidgetItem(
+                                         employee["position"]))
             self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(
-                str(person["salary"])))
+                str(employee["salary"])))
             row += 1
 
 

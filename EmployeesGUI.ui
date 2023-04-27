@@ -41,8 +41,8 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>120</y>
+     <x>30</x>
+     <y>180</y>
      <width>1291</width>
      <height>361</height>
     </rect>
@@ -116,6 +116,58 @@
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>120</y>
+     <width>91</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 13pt &quot;Segoe UI Black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Sory By</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>140</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="editable">
+    <bool>false</bool>
+   </property>
+   <property name="duplicatesEnabled">
+    <bool>false</bool>
+   </property>
+   <item>
+    <property name="text">
+     <string>ID</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Name: A-Z</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Salary: High to Low</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Salary: Low to High</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources>
