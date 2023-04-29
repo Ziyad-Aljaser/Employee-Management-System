@@ -6,18 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1342</width>
-    <height>833</height>
+    <width>1335</width>
+    <height>806</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="background">
    <property name="geometry">
     <rect>
-     <x>-10</x>
-     <y>0</y>
+     <x>-50</x>
+     <y>-30</y>
      <width>1361</width>
      <height>831</height>
     </rect>
@@ -35,7 +35,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="employeeText">
+  <widget class="QLabel" name="employeeLabel">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -52,6 +52,122 @@
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="addEmployeButton">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>620</y>
+     <width>571</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 15pt &quot;Segoe UI Black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Add Employee</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="employeeNameText">
+   <property name="geometry">
+    <rect>
+     <x>225</x>
+     <y>150</y>
+     <width>201</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="employeeNameLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>150</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 15pt &quot;Segoe UI Black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Employee Name</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="employeePositionLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>300</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 15pt &quot;Segoe UI Black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Employee Position</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="employeePositionText">
+   <property name="geometry">
+    <rect>
+     <x>225</x>
+     <y>300</y>
+     <width>201</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="employeeSalaryLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>450</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 15pt &quot;Segoe UI Black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Employee Salary</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="employeeSalaryText">
+   <property name="geometry">
+    <rect>
+     <x>225</x>
+     <y>450</y>
+     <width>201</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="goBackButton">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>620</y>
+     <width>571</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 15pt &quot;Segoe UI Black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Go Back</string>
    </property>
   </widget>
  </widget>
