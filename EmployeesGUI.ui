@@ -111,7 +111,7 @@
     <string notr="true">font: 87 26pt &quot;Segoe UI Black&quot;;</string>
    </property>
    <property name="text">
-    <string>Employee Data</string>
+    <string>Employees Data</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -171,6 +171,19 @@
      <string>Salary: Low to High</string>
     </property>
    </item>
+  </widget>
+  <widget class="QPushButton" name="addEmployeeButton">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>707</y>
+     <width>291</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add New Employee</string>
+   </property>
   </widget>
  </widget>
  <resources>

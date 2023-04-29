@@ -2,18 +2,27 @@ import sys
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QTableWidget, QHeaderView
+from AddEmployeeDashboard import AddEmployeeDashboard
 
+class EmployeesDashboard(QDialog):
 
-class MainWindow(QDialog):
     def __init__(self):
-        super(MainWindow, self).__init__()
+        super(EmployeesDashboard, self).__init__()
         loadUi("EmployeesGUI.ui", self)
-        self.loadData()
+        self.load_data()
+
+        # Used when the "Add Employee" button is clicked, and it opens a new window
+        self.addEmployeeButton.clicked.connect(self.go_to_add_new_employee)
 
         # Used to connect sorting box to sort by the selected option
         self.sortComboBox.currentIndexChanged.connect(self.sort_employees)
 
-    def loadData(self):
+    def go_to_add_new_employee(self):
+        add_new_employee = AddEmployeeDashboard()
+        widget.addWidget(add_new_employee)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+
+    def load_data(self):
         # Fake Data
         self.employees = [
             {"id": 9000, "name": "EmploeeyZ", "position": "CEO", "salary": 50000},
@@ -64,7 +73,7 @@ class MainWindow(QDialog):
 
 # main
 app = QApplication(sys.argv)
-mainWindow = MainWindow()
+mainWindow = EmployeesDashboard()
 widget = QtWidgets.QStackedWidget()
 widget.addWidget(mainWindow)
 widget.setFixedHeight(831)
