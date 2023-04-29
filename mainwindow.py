@@ -9,6 +9,7 @@ class EmployeesDashboard(QDialog):
     def __init__(self):
         super(EmployeesDashboard, self).__init__()
         loadUi("EmployeesGUI.ui", self)
+        self.employees_test = []
         self.load_data()
 
         # Used when the "Add Employee" button is clicked, and it opens a new window

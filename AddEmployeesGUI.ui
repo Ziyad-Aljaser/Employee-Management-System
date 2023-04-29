@@ -35,7 +35,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="employeeLabel">
+  <widget class="QLabel" name="EmpLabel">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -54,7 +54,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="addEmployeButton">
+  <widget class="QPushButton" name="EmpButton">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -73,7 +73,7 @@
     <string>Add Employee</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="employeeNameText">
+  <widget class="QLineEdit" name="EmpNameText">
    <property name="geometry">
     <rect>
      <x>225</x>
@@ -83,7 +83,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="employeeNameLabel">
+  <widget class="QLabel" name="EmpNameLabel">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -99,7 +99,7 @@
     <string>Employee Name</string>
    </property>
   </widget>
-  <widget class="QLabel" name="employeePositionLabel">
+  <widget class="QLabel" name="EmpPositionLabel">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -115,7 +115,7 @@
     <string>Employee Position</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="employeePositionText">
+  <widget class="QLineEdit" name="EmpPositionText">
    <property name="geometry">
     <rect>
      <x>225</x>
@@ -125,7 +125,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="employeeSalaryLabel">
+  <widget class="QLabel" name="EmpSalaryLabel">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -141,7 +141,7 @@
     <string>Employee Salary</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="employeeSalaryText">
+  <widget class="QLineEdit" name="EmpSalaryText">
    <property name="geometry">
     <rect>
      <x>225</x>
@@ -149,25 +149,6 @@
      <width>201</width>
      <height>41</height>
     </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="goBackButton">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>750</x>
-     <y>620</y>
-     <width>571</width>
-     <height>151</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 87 15pt &quot;Segoe UI Black&quot;;</string>
-   </property>
-   <property name="text">
-    <string>Go Back</string>
    </property>
   </widget>
  </widget>
