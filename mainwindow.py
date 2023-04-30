@@ -9,7 +9,10 @@ class EmployeesDashboard(QDialog):
     def __init__(self):
         super(EmployeesDashboard, self).__init__()
         loadUi("EmployeesGUI.ui", self)
+
+        self.second_dialog = None
         self.employees_test = []
+
         self.load_data()
 
         # Used when the "Add Employee" button is clicked, and it opens a new window
@@ -19,9 +22,11 @@ class EmployeesDashboard(QDialog):
         self.sortComboBox.currentIndexChanged.connect(self.sort_employees)
 
     def go_to_add_new_employee(self):
-        add_new_employee = AddEmployeeDashboard()
-        widget.addWidget(add_new_employee)
-        widget.setCurrentIndex(widget.currentIndex()+1)
+        # Used to ensure the AddEmployeeDashboard class is initialized only once
+        if self.second_dialog is None:
+            self.second_dialog = AddEmployeeDashboard(widget)
+            widget.addWidget(self.second_dialog)
+        widget.setCurrentIndex(1)
 
     def load_data(self):
         # Fake Data
@@ -77,8 +82,8 @@ app = QApplication(sys.argv)
 mainWindow = EmployeesDashboard()
 widget = QtWidgets.QStackedWidget()
 widget.addWidget(mainWindow)
-widget.setFixedHeight(831)
-widget.setFixedWidth(1361)
+widget.setFixedHeight(833)
+widget.setFixedWidth(1342)
 widget.show()
 try:
     sys.exit(app.exec_())

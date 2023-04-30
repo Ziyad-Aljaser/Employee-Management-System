@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1342</width>
-    <height>833</height>
+    <height>892</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,14 @@
      <x>-10</x>
      <y>0</y>
      <width>1361</width>
-     <height>831</height>
+     <height>841</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
    </property>
    <property name="autoFillBackground">
     <bool>false</bool>
@@ -109,6 +115,12 @@
      <width>1341</width>
      <height>121</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 87 26pt &quot;Segoe UI Black&quot;;</string>
