@@ -1,7 +1,8 @@
 import sys
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QTableWidget, QHeaderView
+from PyQt5.QtWidgets import QDialog, QApplication, QTableWidget, QHeaderView, QMainWindow, QVBoxLayout, QLineEdit, QPushButton, QLabel, QWidget, QTableWidget, QTableWidgetItem, QHBoxLayout, QAbstractItemView
+
 
 class EmployeesDashboard(QDialog):
 
@@ -11,9 +12,14 @@ class EmployeesDashboard(QDialog):
         self.widget = QtWidgets.QStackedWidget()
         self.widget.setFixedHeight(833)
         self.widget.setFixedWidth(1342)
-
+        self.second_window = None
 
         loadUi("EmployeesGUI.ui", self)
+
+        self.tableWidget.horizontalHeader().setSectionResizeMode(4,
+                                                                 QHeaderView.ResizeToContents)
+        self.tableWidget.verticalHeader().setVisible(False)
+        self.tableWidget.setSelectionMode(QAbstractItemView.NoSelection)
 
         self.employees_list = []
 
@@ -25,8 +31,10 @@ class EmployeesDashboard(QDialog):
 
     # Used to switch the window to the AddEmployeeDashboard class
     def switch_dialog(self):
+        print("switch_dialog() is called")
         self.widget.setCurrentIndex(1)
 
+    # Sort the employees by using sorting box
     def sort_employees(self, index):
         if index == 0:  # Sort by ID
             self.employees_list.sort(key=lambda x: x["id"])
@@ -40,7 +48,10 @@ class EmployeesDashboard(QDialog):
         # Used to update the displayed employees
         self.display_employees()
 
+    # Update the displayed employees
     def display_employees(self):
+        print("display_employees() is called")
+        print(self.employees_list)
         row = 0
         self.tableWidget.setRowCount(len(self.employees_list))
         for employee in self.employees_list:
@@ -54,4 +65,21 @@ class EmployeesDashboard(QDialog):
                                          employee["position"]))
             self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(
                 str(employee["salary"])))
+
+            # Create a new button for each row
+            delete_button = QPushButton("X")
+            # Passing the employee["id"] argument to the remove_employee method
+            # when the button is clicked, using a lambda function as a wrapper.
+            delete_button.clicked.connect(lambda: self.remove_employee(employee["id"]))
+            self.tableWidget.setCellWidget(row, 4, delete_button)
+
             row += 1
+
+    # Remove the employee with the given ID from the employees_list
+    def remove_employee(self, employee_id):
+        print("remove_employee() is called")
+        for employee in self.employees_list:
+            if employee["id"] == employee_id:
+                self.employees_list.remove(employee)
+                break
+        self.display_employees()

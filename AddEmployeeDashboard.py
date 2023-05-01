@@ -2,6 +2,7 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QTableWidget, QHeaderView
 
+
 class AddEmployeeDashboard(QDialog):
 
     def __init__(self, widget, func, emp_list):
@@ -22,12 +23,13 @@ class AddEmployeeDashboard(QDialog):
         self.GoBackButton.clicked.connect(self.switch_dialog)
 
     def new_employee(self):
+        print("new_employee() is called")
         self.id += 1
         self.name = self.EmpNameText.text()
         self.position = self.EmpPositionText.text()
         self.salary = int(self.EmpSalaryText.text())
         self.emp_list.append(self.get_employee())
-
+        print(self.emp_list)
         self.display_employees_func()
 
     def get_employee(self):
