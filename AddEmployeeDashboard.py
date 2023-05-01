@@ -6,17 +6,19 @@ class AddEmployeeDashboard(QDialog):
 
     def __init__(self, widget, func, emp_list):
         super(AddEmployeeDashboard, self).__init__()
+
         self.widget = widget
+        self.display_employees_func = func
+        self.emp_list = emp_list
+
         self.id = 1000
         self.salary = None
         self.position = None
         self.name = None
+
         loadUi("AddEmployeesGUI.ui", self)
-        self.display_employees_func = func
-        self.emp_list = emp_list
 
         self.EmpButton.clicked.connect(self.new_employee)
-
         self.GoBackButton.clicked.connect(self.switch_dialog)
 
     def new_employee(self):

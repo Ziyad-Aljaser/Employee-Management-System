@@ -6,15 +6,20 @@ from PyQt5.QtWidgets import QApplication
 from EmployeesDashboard import EmployeesDashboard
 from AddEmployeeDashboard import AddEmployeeDashboard
 
+
 class Main:
-    # main
+    # main window
     app = QApplication(sys.argv)
-    mainWindow = EmployeesDashboard()
-    mainWindow.widget.addWidget(mainWindow)
-    second_dialog = AddEmployeeDashboard(mainWindow.widget, mainWindow.display_employees,
-                                              mainWindow.employees_list)
-    mainWindow.widget.addWidget(second_dialog)
-    mainWindow.widget.show()
+    employees_window = EmployeesDashboard()
+    employees_window.widget.addWidget(employees_window)
+
+    # Adding new window
+    add_employee_window = AddEmployeeDashboard(employees_window.widget,
+                                               employees_window.display_employees,
+                                               employees_window.employees_list)
+    employees_window.widget.addWidget(add_employee_window)
+
+    employees_window.widget.show()
     try:
         sys.exit(app.exec_())
     finally:
