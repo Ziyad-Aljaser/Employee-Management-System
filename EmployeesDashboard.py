@@ -33,6 +33,12 @@ class EmployeesDashboard(QDialog):
 
         self.employees_list = []
 
+        # Fake Data
+        # self.employees_list = [{"id": 1000, "name": "Ziyad", "position": "CEO", "salary": 50000},
+        #                         {"id": 1001, "name": "Fahad", "position": "CFO", "salary": 5000},
+        #                         {"id": 1002, "name": "Ahmed", "position": "HR", "salary": 500}]
+        # self.display_employees()
+
         # Used when the "Add Employee" button is clicked, and it opens a new window
         self.addEmployeeButton.clicked.connect(self.switch_dialog)
 
@@ -84,7 +90,8 @@ class EmployeesDashboard(QDialog):
 
             # Passing the employee["id"] argument to the remove_employee method
             # when the button is clicked, using a lambda function as a wrapper.
-            delete_button.clicked.connect(lambda: self.remove_employee(employee["id"]))
+            delete_button.clicked.connect(lambda _, employee_id=employee["id"]:
+                                          self.remove_employee(employee_id))
 
             self.tableWidget.setCellWidget(row, 4, delete_button)
 
@@ -95,6 +102,7 @@ class EmployeesDashboard(QDialog):
         print("remove_employee() is called")
         for employee in self.employees_list:
             if employee["id"] == employee_id:
+                print(employee)
                 self.employees_list.remove(employee)
                 break
         self.display_employees()

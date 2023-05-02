@@ -1,7 +1,7 @@
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QTableWidget, QHeaderView
-
+from Employee import Employee
 
 class AddEmployeeDashboard(QDialog):
 
@@ -11,11 +11,7 @@ class AddEmployeeDashboard(QDialog):
         self.widget = widget
         self.display_employees_func = func
         self.emp_list = emp_list
-
         self.id = 1000
-        self.salary = None
-        self.position = None
-        self.name = None
 
         loadUi("AddEmployeesGUI.ui", self)
 
@@ -24,17 +20,23 @@ class AddEmployeeDashboard(QDialog):
 
     def new_employee(self):
         print("new_employee() is called")
+        self.new_employee = Employee(self.id)
+
+        self.new_employee.name = self.EmpNameText.text()
+        self.new_employee.position = self.EmpPositionText.text()
+        self.new_employee.salary = int(self.EmpSalaryText.text())
+
+        self.emp_list.append(self.new_employee.get_employee())
         self.id += 1
-        self.name = self.EmpNameText.text()
-        self.position = self.EmpPositionText.text()
-        self.salary = int(self.EmpSalaryText.text())
-        self.emp_list.append(self.get_employee())
-        print(self.emp_list)
+
+        # Clear the QLineEdit widgets
+        self.EmpNameText.clear()
+        self.EmpPositionText.clear()
+        self.EmpSalaryText.clear()
+
+        # Update the employees dashboard
         self.display_employees_func()
 
-    def get_employee(self):
-        return {"id": self.id, "name": self.name, "position": self.position,
-                "salary": self.salary}
 
     def switch_dialog(self):
         self.widget.setCurrentIndex(0)

@@ -98,7 +98,7 @@
     <bool>false</bool>
    </property>
    <property name="placeholderText">
-    <string/>
+    <string>Ex. John Davis</string>
    </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
@@ -145,6 +145,9 @@
      <height>41</height>
     </rect>
    </property>
+   <property name="placeholderText">
+    <string>Ex. HR</string>
+   </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
    </property>
@@ -173,6 +176,15 @@
      <width>201</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="whatsThis">
+    <string>ref</string>
+   </property>
+   <property name="inputMask">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Ex. 5000$</string>
    </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
