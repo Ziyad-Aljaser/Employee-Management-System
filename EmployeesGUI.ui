@@ -56,11 +56,23 @@
      <height>391</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <property name="editTriggers">
     <set>QAbstractItemView::NoEditTriggers</set>
    </property>
+   <attribute name="horizontalHeaderCascadingSectionResizes">
+    <bool>false</bool>
+   </attribute>
    <attribute name="horizontalHeaderDefaultSectionSize">
     <number>310</number>
+   </attribute>
+   <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="horizontalHeaderStretchLastSection">
+    <bool>false</bool>
    </attribute>
    <column>
     <property name="text">
@@ -75,7 +87,7 @@
    </column>
    <column>
     <property name="text">
-     <string>Delete</string>
+     <string>Name</string>
     </property>
     <property name="font">
      <font>

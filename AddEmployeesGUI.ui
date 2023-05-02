@@ -91,6 +91,18 @@
      <height>41</height>
     </rect>
    </property>
+   <property name="tabletTracking">
+    <bool>false</bool>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="placeholderText">
+    <string/>
+   </property>
+   <property name="clearButtonEnabled">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLabel" name="EmpNameLabel">
    <property name="geometry">
@@ -133,6 +145,9 @@
      <height>41</height>
     </rect>
    </property>
+   <property name="clearButtonEnabled">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLabel" name="EmpSalaryLabel">
    <property name="geometry">
@@ -158,6 +173,9 @@
      <width>201</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="clearButtonEnabled">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="GoBackButton">

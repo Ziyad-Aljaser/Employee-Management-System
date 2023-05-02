@@ -1,7 +1,8 @@
-import sys
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QTableWidget, QHeaderView, QMainWindow, QVBoxLayout, QLineEdit, QPushButton, QLabel, QWidget, QTableWidget, QTableWidgetItem, QHBoxLayout, QAbstractItemView
+from PyQt5.QtWidgets import QDialog, QApplication, QTableWidget, QHeaderView,\
+    QMainWindow, QVBoxLayout, QLineEdit, QPushButton, QLabel, QWidget,\
+    QTableWidget, QTableWidgetItem, QHBoxLayout, QAbstractItemView
 
 
 class EmployeesDashboard(QDialog):
@@ -16,9 +17,18 @@ class EmployeesDashboard(QDialog):
 
         loadUi("EmployeesGUI.ui", self)
 
-        self.tableWidget.horizontalHeader().setSectionResizeMode(4,
-                                                                 QHeaderView.ResizeToContents)
-        self.tableWidget.verticalHeader().setVisible(False)
+        # Used to stretch the buttons
+        self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+
+        # Used to design the delete_button width
+        self.tableWidget.horizontalHeader().setSectionResizeMode(
+            self.tableWidget.columnCount() - 1, QHeaderView.Fixed)
+        self.tableWidget.horizontalHeader().resizeSection(
+            self.tableWidget.columnCount() - 1, 80)
+
+        # self.tableWidget.verticalHeader().setVisible(False)
+
+        # Used to remove the highlight when the row is selected
         self.tableWidget.setSelectionMode(QAbstractItemView.NoSelection)
 
         self.employees_list = []
@@ -66,11 +76,16 @@ class EmployeesDashboard(QDialog):
             self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(
                 str(employee["salary"])))
 
-            # Create a new button for each row
+            # Create a new button for each row with specific style
             delete_button = QPushButton("X")
+            delete_button.setStyleSheet("background-color: red; color: white; text;"
+                                        " font: 10pt 'Segoe UI Black'; margin: 8px;"
+                                        " margin-right: 25px; margin-left: 25px")
+
             # Passing the employee["id"] argument to the remove_employee method
             # when the button is clicked, using a lambda function as a wrapper.
             delete_button.clicked.connect(lambda: self.remove_employee(employee["id"]))
+
             self.tableWidget.setCellWidget(row, 4, delete_button)
 
             row += 1
