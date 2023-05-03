@@ -11,7 +11,7 @@ class AddEmployeeDashboard(QDialog):
         self.widget = widget
         self.display_employees_func = func
         self.emp_list = emp_list
-        self.id = 1000
+        self.id = 1003
 
         loadUi("AddEmployeesGUI.ui", self)
 

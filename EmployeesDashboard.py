@@ -2,7 +2,7 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QTableWidget, QHeaderView,\
     QMainWindow, QVBoxLayout, QLineEdit, QPushButton, QLabel, QWidget,\
-    QTableWidget, QTableWidgetItem, QHBoxLayout, QAbstractItemView
+    QTableWidget, QTableWidgetItem, QHBoxLayout, QAbstractItemView, QMessageBox
 
 
 class EmployeesDashboard(QDialog):
@@ -98,7 +98,7 @@ class EmployeesDashboard(QDialog):
             # Passing the employee["id"] argument to the remove_employee method
             # when the button is clicked, using a lambda function as a wrapper.
             delete_button.clicked.connect(lambda _, employee_id=employee["id"]:
-                                          self.remove_employee(employee_id))
+                                          self.confirm_deletion(employee_id))
 
             self.tableWidget.setCellWidget(row, 4, delete_button)
 
@@ -113,3 +113,15 @@ class EmployeesDashboard(QDialog):
                 self.employees_list.remove(employee)
                 break
         self.display_employees()
+
+    # An alert pops up to confirm the deletion of the employee
+    def confirm_deletion(self, employee_id):
+        confirmation_box = QMessageBox()
+        confirmation_box.setIcon(QMessageBox.Warning)
+        confirmation_box.setWindowTitle("Confirm Deletion")
+        confirmation_box.setText("Are you sure you want to delete this employee?")
+        confirmation_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        result = confirmation_box.exec()
+
+        if result == QMessageBox.Yes:
+            self.remove_employee(employee_id)
