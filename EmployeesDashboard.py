@@ -13,7 +13,6 @@ class EmployeesDashboard(QDialog):
         self.widget = QtWidgets.QStackedWidget()
         self.widget.setFixedHeight(833)
         self.widget.setFixedWidth(1342)
-        self.second_window = None
 
         loadUi("EmployeesGUI.ui", self)
 
@@ -34,10 +33,10 @@ class EmployeesDashboard(QDialog):
         self.employees_list = []
 
         # Fake Data
-        # self.employees_list = [{"id": 1000, "name": "Ziyad", "position": "CEO", "salary": 50000},
-        #                         {"id": 1001, "name": "Fahad", "position": "CFO", "salary": 5000},
-        #                         {"id": 1002, "name": "Ahmed", "position": "HR", "salary": 500}]
-        # self.display_employees()
+        self.employees_list = [{"id": 1000, "name": "Ziyad", "position": "CEO", "salary": 50000},
+                                {"id": 1001, "name": "Fahad", "position": "CFO", "salary": 5000},
+                                {"id": 1002, "name": "Ahmed", "position": "HR", "salary": 500}]
+        self.display_employees()
 
         # Used when the "Add Employee" button is clicked, and it opens a new window
         self.addEmployeeButton.clicked.connect(self.switch_dialog)
@@ -84,9 +83,17 @@ class EmployeesDashboard(QDialog):
 
             # Create a new button for each row with specific style
             delete_button = QPushButton("X")
-            delete_button.setStyleSheet("background-color: red; color: white; text;"
-                                        " font: 10pt 'Segoe UI Black'; margin: 8px;"
-                                        " margin-right: 25px; margin-left: 25px")
+            delete_button.setStyleSheet("""
+                QPushButton {
+                    background-color: red; color: white;
+                    font: 9pt 'Segoe UI Black'; margin: 8px;
+                    margin-right: 25px; margin-left: 25px;
+                    border: 2.4px solid; border-radius: 5px;
+                }
+                QPushButton::hover {
+                    background-color: #9a1300;
+                }
+            """)
 
             # Passing the employee["id"] argument to the remove_employee method
             # when the button is clicked, using a lambda function as a wrapper.
