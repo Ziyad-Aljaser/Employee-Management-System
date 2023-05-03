@@ -19,11 +19,13 @@ class EmployeesDashboard(QDialog):
         # Used to stretch the buttons
         self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
+        # Used to locate the delete button index
+        self.last_col_index = self.tableWidget.columnCount() - 1
+
         # Used to design the delete_button width
         self.tableWidget.horizontalHeader().setSectionResizeMode(
-            self.tableWidget.columnCount() - 1, QHeaderView.Fixed)
-        self.tableWidget.horizontalHeader().resizeSection(
-            self.tableWidget.columnCount() - 1, 80)
+            self.last_col_index, QHeaderView.Fixed)
+        self.tableWidget.horizontalHeader().resizeSection(self.last_col_index, 80)
 
         # self.tableWidget.verticalHeader().setVisible(False)
 
@@ -69,8 +71,10 @@ class EmployeesDashboard(QDialog):
         print(self.employees_list)
         if not self.employees_list:
             self.tableWidget.clearContents()
+            self.tableWidget.horizontalHeader().hideSection(self.last_col_index)
             self.noDataLabel.show()
         else:
+            self.tableWidget.horizontalHeader().showSection(self.last_col_index)
             self.noDataLabel.hide()
             row = 0
             self.tableWidget.setRowCount(len(self.employees_list))
