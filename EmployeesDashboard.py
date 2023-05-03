@@ -44,8 +44,6 @@ class EmployeesDashboard(QDialog):
         # Used to connect sorting box to sort by the selected option
         self.sortComboBox.currentIndexChanged.connect(self.sort_employees)
 
-        self.noDataLabel.hide()
-
     # Used to switch the window to the AddEmployeeDashboard class
     def switch_dialog(self):
         print("switch_dialog() is called")
