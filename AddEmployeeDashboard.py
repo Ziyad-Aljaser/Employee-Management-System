@@ -1,6 +1,6 @@
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QTableWidget, QHeaderView
+from PyQt5.QtWidgets import QDialog
 from Employee import Employee
 
 class AddEmployeeDashboard(QDialog):

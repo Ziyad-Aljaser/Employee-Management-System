@@ -1,9 +1,8 @@
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QTableWidget, QHeaderView,\
-    QMainWindow, QVBoxLayout, QLineEdit, QPushButton, QLabel, QWidget,\
-    QTableWidget, QTableWidgetItem, QHBoxLayout, QAbstractItemView, QMessageBox
-
+from PyQt5.QtWidgets import QDialog, QTableWidget, QHeaderView,\
+     QTableWidgetItem, QAbstractItemView
+from DeleteButton import DeleteButton
 
 class EmployeesDashboard(QDialog):
 
@@ -81,47 +80,13 @@ class EmployeesDashboard(QDialog):
             self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(
                 str(employee["salary"])))
 
-            # Create a new button for each row with specific style
-            delete_button = QPushButton("X")
-            delete_button.setStyleSheet("""
-                QPushButton {
-                    background-color: red; color: white;
-                    font: 9pt 'Segoe UI Black'; margin: 8px;
-                    margin-right: 25px; margin-left: 25px;
-                    border: 2.4px solid; border-radius: 5px;
-                }
-                QPushButton::hover {
-                    background-color: #9a1300;
-                }
-            """)
+            # Create a delete button class
+            delete_button = DeleteButton(self.tableWidget, self.display_employees,
+                                         self.employees_list, row, employee)
 
             # Passing the employee["id"] argument to the remove_employee method
             # when the button is clicked, using a lambda function as a wrapper.
-            delete_button.clicked.connect(lambda _, employee_id=employee["id"]:
-                                          self.confirm_deletion(employee_id))
-
-            self.tableWidget.setCellWidget(row, 4, delete_button)
+            delete_button.del_button.clicked.connect(lambda _, employee_id=employee["id"]:
+                                          delete_button.confirm_deletion(employee_id))
 
             row += 1
-
-    # Remove the employee with the given ID from the employees_list
-    def remove_employee(self, employee_id):
-        print("remove_employee() is called")
-        for employee in self.employees_list:
-            if employee["id"] == employee_id:
-                print(employee)
-                self.employees_list.remove(employee)
-                break
-        self.display_employees()
-
-    # An alert pops up to confirm the deletion of the employee
-    def confirm_deletion(self, employee_id):
-        confirmation_box = QMessageBox()
-        confirmation_box.setIcon(QMessageBox.Warning)
-        confirmation_box.setWindowTitle("Confirm Deletion")
-        confirmation_box.setText("Are you sure you want to delete this employee?")
-        confirmation_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-        result = confirmation_box.exec()
-
-        if result == QMessageBox.Yes:
-            self.remove_employee(employee_id)
