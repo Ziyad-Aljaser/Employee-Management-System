@@ -18,16 +18,21 @@ class EmployeesDashboard(QDialog):
 
         self.employees_list = []
 
-        # Used to stretch the buttons
+        # Used to stretch the columns
         self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
-        # Used to locate the delete button index
-        self.last_col_index = self.tableWidget.columnCount() - 1
+        # Used to locate the delete/edit button index
+        self.delete_col_index = self.tableWidget.columnCount() - 1
+        self.edit_col_index = self.tableWidget.columnCount() - 2
 
-        # Used to design the delete_button width
+        # Used to design the delete/edit buttons width
         self.tableWidget.horizontalHeader().setSectionResizeMode(
-            self.last_col_index, QHeaderView.Fixed)
-        self.tableWidget.horizontalHeader().resizeSection(self.last_col_index, 80)
+            self.delete_col_index, QHeaderView.Fixed)
+        self.tableWidget.horizontalHeader().setSectionResizeMode(
+            self.edit_col_index, QHeaderView.Fixed)
+
+        self.tableWidget.horizontalHeader().resizeSection(self.delete_col_index, 80)
+        self.tableWidget.horizontalHeader().resizeSection(self.edit_col_index, 80)
 
         # Used to remove the highlight when the row is selected
         self.tableWidget.setSelectionMode(QAbstractItemView.NoSelection)
@@ -78,11 +83,13 @@ class EmployeesDashboard(QDialog):
         if not self.employees_list:
             self.tableWidget.hideRow(0)
             self.tableWidget.clearContents()
-            self.tableWidget.horizontalHeader().hideSection(self.last_col_index)
+            self.tableWidget.horizontalHeader().hideSection(self.delete_col_index)
+            self.tableWidget.horizontalHeader().hideSection(self.edit_col_index)
             self.noDataLabel.show()
         else:
             self.tableWidget.showRow(0)
-            self.tableWidget.horizontalHeader().showSection(self.last_col_index)
+            self.tableWidget.horizontalHeader().showSection(self.delete_col_index)
+            self.tableWidget.horizontalHeader().showSection(self.edit_col_index)
             self.noDataLabel.hide()
             row = 0
             self.tableWidget.setRowCount(len(self.employees_list))
