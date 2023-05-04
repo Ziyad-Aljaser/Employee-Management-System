@@ -2,7 +2,7 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QTableWidget, QHeaderView,\
      QTableWidgetItem, QAbstractItemView
-from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtCore import QCoreApplication, Qt
 from DeleteButton import DeleteButton
 
 class EmployeesDashboard(QDialog):
@@ -16,6 +16,8 @@ class EmployeesDashboard(QDialog):
 
         loadUi("EmployeesGUI.ui", self)
 
+        self.employees_list = []
+
         # Used to stretch the buttons
         self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
@@ -27,12 +29,14 @@ class EmployeesDashboard(QDialog):
             self.last_col_index, QHeaderView.Fixed)
         self.tableWidget.horizontalHeader().resizeSection(self.last_col_index, 80)
 
-        # self.tableWidget.verticalHeader().setVisible(False)
-
         # Used to remove the highlight when the row is selected
         self.tableWidget.setSelectionMode(QAbstractItemView.NoSelection)
 
-        self.employees_list = []
+        # Used to highlight the item on inside the table
+        self.tableWidget.setSelectionMode(QTableWidget.SingleSelection)
+
+        # Used to set focus on the item only when it is clicked
+        self.tableWidget.setFocusPolicy(Qt.ClickFocus)
 
         # Fake Data
         self.employees_list = [{"id": 1000, "name": "Ziyad", "position": "CEO", "salary": 50000},
@@ -69,11 +73,15 @@ class EmployeesDashboard(QDialog):
     def display_employees(self):
         print("display_employees() is called")
         print(self.employees_list)
+
+        # Used to check if employee list is empty or not
         if not self.employees_list:
+            self.tableWidget.hideRow(0)
             self.tableWidget.clearContents()
             self.tableWidget.horizontalHeader().hideSection(self.last_col_index)
             self.noDataLabel.show()
         else:
+            self.tableWidget.showRow(0)
             self.tableWidget.horizontalHeader().showSection(self.last_col_index)
             self.noDataLabel.hide()
             row = 0
@@ -100,3 +108,10 @@ class EmployeesDashboard(QDialog):
                                               delete_button.confirm_deletion(employee_id))
 
                 row += 1
+
+    def mousePressEvent(self, event):
+        # If there is no item at the clicked position, clear the selection
+        self.tableWidget.clearSelection()
+        # Call the superclass implementation to handle the event
+        super().mousePressEvent(event)
+
