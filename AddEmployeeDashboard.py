@@ -3,6 +3,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog
 from Employee import Employee
 
+
 class AddEmployeeDashboard(QDialog):
 
     def __init__(self, widget, func, emp_list):

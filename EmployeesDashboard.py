@@ -3,7 +3,10 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QTableWidget, QHeaderView,\
      QTableWidgetItem, QAbstractItemView
 from PyQt5.QtCore import QCoreApplication, Qt
+
 from DeleteButton import DeleteButton
+from EditButton import EditButton
+
 
 class EmployeesDashboard(QDialog):
 
@@ -105,8 +108,11 @@ class EmployeesDashboard(QDialog):
                 self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(
                     str(employee["salary"])))
 
-                # Create a delete button class
+                # Create a delete/fix button classes
                 delete_button = DeleteButton(self.tableWidget, self.display_employees,
+                                             self.employees_list, row, employee)
+                edit_button = EditButton(self.tableWidget,
+                                             self.display_employees,
                                              self.employees_list, row, employee)
 
                 # Passing the employee["id"] argument to the remove_employee method

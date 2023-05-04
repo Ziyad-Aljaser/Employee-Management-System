@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QPushButton, QMessageBox
 
+
 class DeleteButton(QDialog):
     def __init__(self, widget, func, emp_list, row, emp):
         super(DeleteButton, self).__init__()
@@ -15,9 +16,9 @@ class DeleteButton(QDialog):
         self.del_button.setStyleSheet("""
             QPushButton {
                 background-color: red; color: white;
-                font: 9pt 'Segoe UI Black'; margin: 8px;
+                font: 9pt 'Segoe UI Black'; margin: 7px;
                 margin-right: 25px; margin-left: 25px;
-                border: 2.4px solid; border-radius: 5px;
+                border: 3px solid; border-radius: 5px;
             }
             QPushButton::hover {
                 background-color: #9a1300;
