@@ -7,6 +7,7 @@ from PyQt5.QtCore import QCoreApplication, Qt
 from DeleteButton import DeleteButton
 from EditButton import EditButton
 
+from UpdateEmployeeWindow import UpdateEmployeeWindow
 
 class EmployeesDashboard(QDialog):
 
@@ -16,6 +17,7 @@ class EmployeesDashboard(QDialog):
         self.widget = QtWidgets.QStackedWidget()
         self.widget.setFixedHeight(833)
         self.widget.setFixedWidth(1342)
+        self.update_employee_window = None
 
         loadUi("EmployeesGUI.ui", self)
 
@@ -53,15 +55,28 @@ class EmployeesDashboard(QDialog):
         self.display_employees()
 
         # Used when the "Add Employee" button is clicked, and it opens a new window
-        self.addEmployeeButton.clicked.connect(self.switch_dialog)
+        self.addEmployeeButton.clicked.connect(self.switch_dialog_to_new_emp)
 
         # Used to connect sorting box to sort by the selected option
         self.sortComboBox.currentIndexChanged.connect(self.sort_employees)
 
-    # Used to switch the window to the AddEmployeeDashboard class
-    def switch_dialog(self):
-        print("switch_dialog() is called")
+    # Used to switch the window to the AddEmployeeWindow class
+    def switch_dialog_to_new_emp(self):
+        print("switch_dialog_to_new_emp() is called")
         self.widget.setCurrentIndex(1)
+
+    # Used to switch the window to the UpdateEmployeeWindow class
+    def switch_dialog_to_update_emp(self, current_emp):
+        print("switch_dialog_to_update_emp() is called")
+        if self.update_employee_window is None:
+            # New window for updating employees
+            self.update_employee_window = UpdateEmployeeWindow(self.widget,
+                                                          self.display_employees,
+                                                          self.employees_list)
+            self.widget.addWidget(self.update_employee_window)
+
+        self.update_employee_window.find_current_emp(current_emp)
+        self.widget.setCurrentIndex(2)
 
     # Sort the employees by using sorting box
     def sort_employees(self, index):
@@ -79,8 +94,8 @@ class EmployeesDashboard(QDialog):
 
     # Update the displayed employees
     def display_employees(self):
-        print("display_employees() is called")
-        print(self.employees_list)
+        # print("display_employees() is called")
+        # print(self.employees_list)
 
         # Used to check if employee list is empty or not
         if not self.employees_list:
@@ -108,17 +123,24 @@ class EmployeesDashboard(QDialog):
                 self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(
                     str(employee["salary"])))
 
-                # Create a delete/fix button classes
-                delete_button = DeleteButton(self.tableWidget, self.display_employees,
-                                             self.employees_list, row, employee)
+                # Create a fix/delete buttons
                 edit_button = EditButton(self.tableWidget,
                                              self.display_employees,
                                              self.employees_list, row, employee)
 
+                delete_button = DeleteButton(self.tableWidget, self.display_employees,
+                                             self.employees_list, row, employee)
+
                 # Passing the employee["id"] argument to the remove_employee method
                 # when the button is clicked, using a lambda function as a wrapper.
-                delete_button.del_button.clicked.connect(lambda _, employee_id=employee["id"]:
-                                              delete_button.confirm_deletion(employee_id))
+                delete_button.del_button.clicked.connect(
+                    lambda _, employee_id=employee["id"]:
+                    delete_button.confirm_deletion(employee_id))
+
+                edit_button.edit_button.clicked.connect(
+                    lambda _, employee_id=employee["id"]:
+                    self.switch_dialog_to_update_emp(employee_id)
+                    )
 
                 row += 1
 
