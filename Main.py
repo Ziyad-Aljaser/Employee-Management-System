@@ -3,7 +3,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication
 
 from EmployeesDashboard import EmployeesDashboard
-from AddEmployeeDashboard import AddEmployeeDashboard
+from AddEmployeeWindow import AddEmployeeWindow
 
 
 class Main:
@@ -13,7 +13,7 @@ class Main:
     employees_window.widget.addWidget(employees_window)
 
     # Adding new window
-    add_employee_window = AddEmployeeDashboard(employees_window.widget,
+    add_employee_window = AddEmployeeWindow(employees_window.widget,
                                                employees_window.display_employees,
                                                employees_window.employees_list)
     employees_window.widget.addWidget(add_employee_window)

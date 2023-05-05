@@ -4,10 +4,10 @@ from PyQt5.QtWidgets import QDialog
 from Employee import Employee
 
 
-class AddEmployeeDashboard(QDialog):
+class AddEmployeeWindow(QDialog):
 
     def __init__(self, widget, func, emp_list):
-        super(AddEmployeeDashboard, self).__init__()
+        super(AddEmployeeWindow, self).__init__()
 
         self.widget = widget
         self.display_employees_func = func
