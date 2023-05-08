@@ -21,32 +21,9 @@ class EmployeesDashboard(QDialog):
 
         loadUi("EmployeesGUI.ui", self)
 
+        self.edit_table_widget()
+
         self.employees_list = []
-
-        # Used to stretch the columns
-        self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-
-        # Used to locate the delete/edit button index
-        self.delete_col_index = self.tableWidget.columnCount() - 1
-        self.edit_col_index = self.tableWidget.columnCount() - 2
-
-        # Used to design the delete/edit buttons width
-        self.tableWidget.horizontalHeader().setSectionResizeMode(
-            self.delete_col_index, QHeaderView.Fixed)
-        self.tableWidget.horizontalHeader().setSectionResizeMode(
-            self.edit_col_index, QHeaderView.Fixed)
-
-        self.tableWidget.horizontalHeader().resizeSection(self.delete_col_index, 80)
-        self.tableWidget.horizontalHeader().resizeSection(self.edit_col_index, 80)
-
-        # Used to remove the highlight when the row is selected
-        self.tableWidget.setSelectionMode(QAbstractItemView.NoSelection)
-
-        # Used to highlight the item on inside the table
-        self.tableWidget.setSelectionMode(QTableWidget.SingleSelection)
-
-        # Used to set focus on the item only when it is clicked
-        self.tableWidget.setFocusPolicy(Qt.ClickFocus)
 
         # Fake Data
         self.employees_list = [{"id": 1000, "name": "Ziyad", "position": "CEO", "salary": 50000},
@@ -77,6 +54,35 @@ class EmployeesDashboard(QDialog):
 
         self.update_employee_window.find_current_emp(current_emp)
         self.widget.setCurrentIndex(2)
+
+
+    def edit_table_widget(self):
+        # Used to stretch the columns
+        self.tableWidget.horizontalHeader().setSectionResizeMode(
+            QHeaderView.Stretch)
+
+        # Used to locate the delete/edit button index
+        self.delete_col_index = self.tableWidget.columnCount() - 1
+        self.edit_col_index = self.tableWidget.columnCount() - 2
+
+        # Used to design the delete/edit buttons width
+        self.tableWidget.horizontalHeader().setSectionResizeMode(
+            self.delete_col_index, QHeaderView.Fixed)
+        self.tableWidget.horizontalHeader().setSectionResizeMode(
+            self.edit_col_index, QHeaderView.Fixed)
+
+        self.tableWidget.horizontalHeader().resizeSection(self.delete_col_index, 80)
+        self.tableWidget.horizontalHeader().resizeSection(self.edit_col_index, 80)
+
+        # Used to remove the highlight when the row is selected
+        self.tableWidget.setSelectionMode(QAbstractItemView.NoSelection)
+
+        # Used to highlight the item on inside the table
+        self.tableWidget.setSelectionMode(QTableWidget.SingleSelection)
+
+        # Used to set focus on the item only when it is clicked
+        self.tableWidget.setFocusPolicy(Qt.ClickFocus)
+
 
     # Sort the employees by using sorting box
     def sort_employees(self, index):
