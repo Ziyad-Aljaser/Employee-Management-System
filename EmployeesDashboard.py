@@ -21,6 +21,7 @@ class EmployeesDashboard(QDialog):
 
         loadUi("EmployeesGUI.ui", self)
 
+        # Used to add new features to the employee table
         self.edit_table_widget()
 
         self.employees_list = []
@@ -116,16 +117,22 @@ class EmployeesDashboard(QDialog):
             row = 0
             self.tableWidget.setRowCount(len(self.employees_list))
             for employee in self.employees_list:
-                self.tableWidget.setItem(row, 0,
-                                         QtWidgets.QTableWidgetItem(
-                                             str(employee["id"])))
-                self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(
-                    str(employee["name"])))
-                self.tableWidget.setItem(row, 2,
-                                         QtWidgets.QTableWidgetItem(
-                                             employee["position"]))
-                self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(
-                    str(employee["salary"])))
+
+                id_item = QtWidgets.QTableWidgetItem(str(employee["id"]))
+                id_item.setToolTip(str(employee["id"]))
+                self.tableWidget.setItem(row, 0,id_item)
+
+                name_item = QtWidgets.QTableWidgetItem(str(employee["name"]))
+                name_item.setToolTip(str(employee["name"]))
+                self.tableWidget.setItem(row, 1, name_item)
+
+                position_item = QtWidgets.QTableWidgetItem(str(employee["position"]))
+                position_item.setToolTip(str(employee["position"]))
+                self.tableWidget.setItem(row, 2, position_item)
+
+                salary_item = QtWidgets.QTableWidgetItem(str(employee["salary"]))
+                salary_item.setToolTip(str(employee["salary"]))
+                self.tableWidget.setItem(row, 3, salary_item)
 
                 # Create a fix/delete buttons
                 edit_button = EditButton(self.tableWidget,
