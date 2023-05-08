@@ -1,6 +1,6 @@
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QDialog, QMessageBox
 from Employee import Employee
 
 
@@ -21,13 +21,13 @@ class AddEmployeeWindow(QDialog):
 
     def new_employee(self):
         print("new_employee() is called")
-        self.new_employee = Employee(self.id)
+        new_emp = Employee(self.id)
 
-        self.new_employee.name = self.EmpNameText.text()
-        self.new_employee.position = self.EmpPositionText.text()
-        self.new_employee.salary = int(self.EmpSalaryText.text())
+        new_emp.name = self.EmpNameText.text().strip()
+        new_emp.position = self.EmpPositionText.text().strip()
+        new_emp.salary = int(self.EmpSalaryText.text())
 
-        self.emp_list.append(self.new_employee.get_employee())
+        self.emp_list.append(new_emp.get_employee())
         self.id += 1
 
         # Clear the QLineEdit widgets
@@ -35,9 +35,18 @@ class AddEmployeeWindow(QDialog):
         self.EmpPositionText.clear()
         self.EmpSalaryText.clear()
 
+        self.show_success_alert(new_emp.name)
+
         # Update the employees dashboard
         self.display_employees_func()
 
+    # An alert pops up to confirm that the employee is added successfully
+    def show_success_alert(self, new_emp):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText(new_emp + " Added Successfully")
+        msg.setWindowTitle("Success")
+        msg.exec_()
 
     def switch_dialog(self):
         self.widget.setCurrentIndex(0)

@@ -55,7 +55,6 @@ class EmployeesDashboard(QDialog):
         self.update_employee_window.find_current_emp(current_emp)
         self.widget.setCurrentIndex(2)
 
-
     def edit_table_widget(self):
         # Used to stretch the columns
         self.tableWidget.horizontalHeader().setSectionResizeMode(
@@ -82,7 +81,6 @@ class EmployeesDashboard(QDialog):
 
         # Used to set focus on the item only when it is clicked
         self.tableWidget.setFocusPolicy(Qt.ClickFocus)
-
 
     # Sort the employees by using sorting box
     def sort_employees(self, index):

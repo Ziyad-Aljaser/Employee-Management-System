@@ -1,6 +1,6 @@
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QDialog, QMessageBox
 
 
 class UpdateEmployeeWindow(QDialog):
@@ -31,12 +31,23 @@ class UpdateEmployeeWindow(QDialog):
 
     def update_employee(self):
         print("update_employee() is called")
-        self.employee_to_modify["name"] = self.EmpNameText.text()
-        self.employee_to_modify["position"] = self.EmpPositionText.text()
+        self.employee_to_modify["name"] = self.EmpNameText.text().strip()
+        self.employee_to_modify["position"] = self.EmpPositionText.text().strip()
         self.employee_to_modify["salary"] = int(self.EmpSalaryText.text())
+
+        self.show_success_alert(self.employee_to_modify["name"])
 
         # Update the employees dashboard
         self.display_employees_func()
+
+    # An alert pops up to confirm that the employee is added successfully
+    def show_success_alert(self, update_emp):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText(update_emp + " Updated Successfully")
+        msg.setWindowTitle("Success")
+        msg.exec_()
+
 
     def switch_dialog(self):
         self.widget.setCurrentIndex(0)
