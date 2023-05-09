@@ -25,7 +25,7 @@ class AddEmployeeWindow(QDialog):
         if(self.check_emp()):
             new_emp = Employee(self.id)
 
-            new_emp.name = self.EmpNameText.text()
+            new_emp.name = self.EmpNameText.text().strip()
             new_emp.position = self.EmpPositionText.text().strip()
             new_emp.salary = int(self.EmpSalaryText.text())
 

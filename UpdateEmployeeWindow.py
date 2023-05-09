@@ -31,7 +31,7 @@ class UpdateEmployeeWindow(QDialog):
 
     def update_employee(self):
         print("update_employee() is called")
-        try:
+        if (self.check_emp()):
             self.employee_to_modify["name"] = self.EmpNameText.text().strip()
             self.employee_to_modify["position"] = self.EmpPositionText.text().strip()
             self.employee_to_modify["salary"] = int(self.EmpSalaryText.text())
@@ -40,8 +40,22 @@ class UpdateEmployeeWindow(QDialog):
 
             # Update the employees dashboard
             self.display_employees_func()
-        except:
+        else:
             self.show_error_alert()
+
+    # Used to insure all the data entered is pure
+    def check_emp(self):
+        name = self.EmpNameText.text()
+        position = self.EmpPositionText.text()
+        salary = self.EmpSalaryText.text()
+        if (name.replace(' ', '').isalpha() and position.replace(' ', '').isalpha()
+                and salary):
+            try:
+                if (int(salary) > 0):
+                    return True
+            except:
+                return False
+        return False
 
     # An alert pops up to confirm that the employee is added successfully
     def show_success_alert(self, update_emp):
