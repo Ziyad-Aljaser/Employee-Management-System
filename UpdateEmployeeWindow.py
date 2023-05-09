@@ -31,14 +31,17 @@ class UpdateEmployeeWindow(QDialog):
 
     def update_employee(self):
         print("update_employee() is called")
-        self.employee_to_modify["name"] = self.EmpNameText.text().strip()
-        self.employee_to_modify["position"] = self.EmpPositionText.text().strip()
-        self.employee_to_modify["salary"] = int(self.EmpSalaryText.text())
+        try:
+            self.employee_to_modify["name"] = self.EmpNameText.text().strip()
+            self.employee_to_modify["position"] = self.EmpPositionText.text().strip()
+            self.employee_to_modify["salary"] = int(self.EmpSalaryText.text())
 
-        self.show_success_alert(self.employee_to_modify["name"])
+            self.show_success_alert(self.employee_to_modify["name"])
 
-        # Update the employees dashboard
-        self.display_employees_func()
+            # Update the employees dashboard
+            self.display_employees_func()
+        except:
+            self.show_error_alert()
 
     # An alert pops up to confirm that the employee is added successfully
     def show_success_alert(self, update_emp):
@@ -48,6 +51,13 @@ class UpdateEmployeeWindow(QDialog):
         msg.setWindowTitle("Success")
         msg.exec_()
 
+    # An alert pops up to indicate that the data entered is invalid
+    def show_error_alert(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText("Please Enter Valid Data")
+        msg.setWindowTitle("ERROR")
+        msg.exec_()
 
     def switch_dialog(self):
         self.widget.setCurrentIndex(0)

@@ -184,7 +184,7 @@
     <string/>
    </property>
    <property name="placeholderText">
-    <string>Ex. 5000$</string>
+    <string>Ex. 5000</string>
    </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>

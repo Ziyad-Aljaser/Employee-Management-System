@@ -21,31 +21,57 @@ class AddEmployeeWindow(QDialog):
 
     def new_employee(self):
         print("new_employee() is called")
-        new_emp = Employee(self.id)
 
-        new_emp.name = self.EmpNameText.text().strip()
-        new_emp.position = self.EmpPositionText.text().strip()
-        new_emp.salary = int(self.EmpSalaryText.text())
+        if(self.check_emp()):
+            new_emp = Employee(self.id)
 
-        self.emp_list.append(new_emp.get_employee())
-        self.id += 1
+            new_emp.name = self.EmpNameText.text()
+            new_emp.position = self.EmpPositionText.text().strip()
+            new_emp.salary = int(self.EmpSalaryText.text())
 
-        # Clear the QLineEdit widgets
-        self.EmpNameText.clear()
-        self.EmpPositionText.clear()
-        self.EmpSalaryText.clear()
+            self.emp_list.append(new_emp.get_employee())
+            self.id += 1
 
-        self.show_success_alert(new_emp.name)
+            # Clear the QLineEdit widgets
+            self.EmpNameText.clear()
+            self.EmpPositionText.clear()
+            self.EmpSalaryText.clear()
 
-        # Update the employees dashboard
-        self.display_employees_func()
+            self.show_success_alert(new_emp.name)
+
+            # Update the employees dashboard
+            self.display_employees_func()
+        else:
+            self.show_error_alert()
+
+    # Used to insure all the data entered is pure
+    def check_emp(self):
+        name = self.EmpNameText.text()
+        position = self.EmpPositionText.text()
+        salary = self.EmpSalaryText.text()
+        if (name.replace(' ', '').isalpha() and position.replace(' ', '').isalpha()
+                and salary):
+            try:
+                if (int(salary) > 0):
+                    return True
+            except:
+                return False
+        return False
 
     # An alert pops up to confirm that the employee is added successfully
     def show_success_alert(self, new_emp):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
         msg.setText(new_emp + " Added Successfully")
-        msg.setWindowTitle("Success")
+        msg.setWindowTitle("SUCCESS")
+        msg.exec_()
+
+    # An alert pops up to indicate that the data entered is invalid
+    def show_error_alert(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText("Please Enter Valid Data")
+        msg.setWindowTitle("ERROR")
         msg.exec_()
 
     def switch_dialog(self):

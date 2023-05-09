@@ -116,8 +116,9 @@ class EmployeesDashboard(QDialog):
             self.noDataLabel.hide()
             row = 0
             self.tableWidget.setRowCount(len(self.employees_list))
-            for employee in self.employees_list:
 
+            # Used to iterate over the employees and display them
+            for employee in self.employees_list:
                 id_item = QtWidgets.QTableWidgetItem(str(employee["id"]))
                 id_item.setToolTip(str(employee["id"]))
                 self.tableWidget.setItem(row, 0,id_item)
@@ -130,8 +131,9 @@ class EmployeesDashboard(QDialog):
                 position_item.setToolTip(str(employee["position"]))
                 self.tableWidget.setItem(row, 2, position_item)
 
-                salary_item = QtWidgets.QTableWidgetItem(str(employee["salary"]))
-                salary_item.setToolTip(str(employee["salary"]))
+                salary_converted = self.format_salary(employee["salary"])
+                salary_item = QtWidgets.QTableWidgetItem(salary_converted)
+                salary_item.setToolTip(salary_converted)
                 self.tableWidget.setItem(row, 3, salary_item)
 
                 # Create a fix/delete buttons
@@ -154,6 +156,9 @@ class EmployeesDashboard(QDialog):
                     )
 
                 row += 1
+
+    def format_salary(self, salary):
+        return "{:,.0f}$".format(salary)
 
     def mousePressEvent(self, event):
         # If there is no item at the clicked position, clear the selection
