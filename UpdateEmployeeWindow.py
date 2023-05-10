@@ -1,6 +1,8 @@
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QMessageBox
+from PyQt5.QtGui import QRegExpValidator, QIntValidator
+from PyQt5.QtCore import QRegExp
 
 
 class UpdateEmployeeWindow(QDialog):
@@ -16,6 +18,17 @@ class UpdateEmployeeWindow(QDialog):
 
         self.EmpButton.clicked.connect(self.update_employee)
         self.GoBackButton.clicked.connect(self.switch_dialog)
+
+        # Used to apply a regular expression to restrict the input to String
+        regEx = QRegExp("[a-z A-Z]+")
+        string_validator = QRegExpValidator(regEx)
+        # Used to restrict the input to int values only
+        int_validator = QIntValidator()
+
+        # Apply the validators:
+        self.EmpNameText.setValidator(string_validator)
+        self.EmpPositionText.setValidator(string_validator)
+        self.EmpSalaryText.setValidator(int_validator)
 
         self.employee_to_modify = None
 
@@ -43,19 +56,24 @@ class UpdateEmployeeWindow(QDialog):
         else:
             self.show_error_alert()
 
-    # Used to insure all the data entered is pure
+    # Used to check if all fields have data and the salary is not negative
     def check_emp(self):
+        print("check_emp() is called")
         name = self.EmpNameText.text()
         position = self.EmpPositionText.text()
         salary = self.EmpSalaryText.text()
-        if (name.replace(' ', '').isalpha() and position.replace(' ', '').isalpha()
-                and salary):
-            try:
-                if (int(salary) > 0):
-                    return True
-            except:
+
+        # Uesd to add all text data to this list
+        fields = [name, position, salary]
+        for field in fields:
+            # Checks if the text is empty or contains only whitespace
+            if not field.strip():
                 return False
-        return False
+
+        if int(salary) < 0:
+            return False
+
+        return True
 
     # An alert pops up to confirm that the employee is added successfully
     def show_success_alert(self, update_emp):
