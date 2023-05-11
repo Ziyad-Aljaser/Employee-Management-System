@@ -1,8 +1,9 @@
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QTableWidget, QHeaderView,\
-     QTableWidgetItem, QAbstractItemView
+     QTableWidgetItem, QAbstractItemView, QFileDialog, QMessageBox
 from PyQt5.QtCore import QCoreApplication, Qt
+import csv
 
 from DeleteButton import DeleteButton
 from EditButton import EditButton
@@ -34,6 +35,8 @@ class EmployeesDashboard(QDialog):
 
         # Used when the "Add Employee" button is clicked, and it opens a new window
         self.addEmployeeButton.clicked.connect(self.switch_dialog_to_new_emp)
+
+        self.CSV_Download.clicked.connect(self.download_csv)
 
         # Used to connect sorting box to sort by the selected option
         self.sortComboBox.currentIndexChanged.connect(self.sort_employees)
@@ -157,8 +160,44 @@ class EmployeesDashboard(QDialog):
 
                 row += 1
 
+    def download_csv(self):
+        # Open a save file dialog and get the chosen file path and name
+        filename, _ = QFileDialog.getSaveFileName(self, "Save CSV", "",
+                                                  "CSV Files (*.csv)")
+
+        # Used to check if a file name was selected (cancel was not clicked)
+        if filename != '':
+            # If the file does not end in .csv, append .csv
+            if not filename.endswith('.csv'):
+                filename += '.csv'
+
+            # Column names of the data
+            fields = ["id", "name", "position", "salary"]
+
+            # Used to write to the CSV file
+            with open(filename, mode='w', newline='') as csvfile:
+                # Creating a CSV writer object
+                csvwriter = csv.writer(csvfile)
+
+                # Used to write the column headers
+                csvwriter.writerow(fields)
+
+                # Used to write the data rows
+                for row in self.employees_list:
+                    csvwriter.writerow([row["id"], row["name"], row["position"], row["salary"]])
+
+            self.show_success_alert(filename)
+
     def format_salary(self, salary):
         return "{:,.0f}$".format(salary)
+
+    # An alert pops up to confirm that the file is saved successfully
+    def show_success_alert(self, filename):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText(f"CSV file has been saved to: {filename}")
+        msg.setWindowTitle("SUCCESS")
+        msg.exec_()
 
     def mousePressEvent(self, event):
         # If there is no item at the clicked position, clear the selection

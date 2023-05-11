@@ -262,7 +262,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="CSV_Button">
+  <widget class="QPushButton" name="CSV_Download">
    <property name="geometry">
     <rect>
      <x>1160</x>
