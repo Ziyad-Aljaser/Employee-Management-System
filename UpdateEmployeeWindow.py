@@ -32,6 +32,7 @@ class UpdateEmployeeWindow(QDialog):
 
         self.employee_to_modify = None
 
+    # Used to locate the chosen employee
     def find_current_emp(self, employee_id):
         print("find_current_emp() is called")
         for employee in self.emp_list:
@@ -42,6 +43,7 @@ class UpdateEmployeeWindow(QDialog):
                 self.EmpSalaryText.setText(str(employee["salary"]))
                 break
 
+    # Used to update the chosen employee with the new data
     def update_employee(self):
         print("update_employee() is called")
         if (self.check_emp()):

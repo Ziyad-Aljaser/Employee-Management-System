@@ -179,7 +179,7 @@
     <string notr="true">font: 87 13pt &quot;Segoe UI Black&quot;;</string>
    </property>
    <property name="text">
-    <string>Sory By</string>
+    <string>Sory By:</string>
    </property>
   </widget>
   <widget class="QComboBox" name="sortComboBox">
@@ -225,7 +225,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>707</y>
+     <y>720</y>
      <width>291</width>
      <height>71</height>
     </rect>
@@ -260,6 +260,22 @@
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="CSV_Button">
+   <property name="geometry">
+    <rect>
+     <x>1160</x>
+     <y>180</y>
+     <width>161</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 10pt &quot;Segoe UI Black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>CSV Download</string>
    </property>
   </widget>
  </widget>
