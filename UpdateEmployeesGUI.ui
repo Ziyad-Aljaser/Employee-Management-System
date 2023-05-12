@@ -69,7 +69,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>50</x>
      <y>620</y>
      <width>571</width>
      <height>151</height>
@@ -85,7 +85,7 @@
   <widget class="QLineEdit" name="EmpNameText">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>300</x>
      <y>150</y>
      <width>201</width>
      <height>41</height>
@@ -104,7 +104,7 @@
   <widget class="QLabel" name="EmpNameLabel">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>50</x>
      <y>150</y>
      <width>241</width>
      <height>31</height>
@@ -120,7 +120,7 @@
   <widget class="QLabel" name="EmpPositionLabel">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>50</x>
      <y>300</y>
      <width>241</width>
      <height>31</height>
@@ -136,7 +136,7 @@
   <widget class="QLineEdit" name="EmpPositionText">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>300</x>
      <y>300</y>
      <width>201</width>
      <height>41</height>
@@ -149,7 +149,7 @@
   <widget class="QLabel" name="EmpSalaryLabel">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>50</x>
      <y>450</y>
      <width>241</width>
      <height>31</height>
@@ -165,7 +165,7 @@
   <widget class="QLineEdit" name="EmpSalaryText">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>300</x>
      <y>450</y>
      <width>201</width>
      <height>41</height>
@@ -201,6 +201,70 @@
    </property>
    <property name="text">
     <string>Go Back</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="EmpCountryLabel">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>150</y>
+     <width>241</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 15pt &quot;Segoe UI Black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Employee Country</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="EmpCountryText">
+   <property name="geometry">
+    <rect>
+     <x>950</x>
+     <y>150</y>
+     <width>201</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="tabletTracking">
+    <bool>false</bool>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="placeholderText">
+    <string>Ex. United States</string>
+   </property>
+   <property name="clearButtonEnabled">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="EmpAgeLabel">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>300</y>
+     <width>241</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 15pt &quot;Segoe UI Black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Employee Age</string>
+   </property>
+  </widget>
+  <widget class="QDateEdit" name="EmpAgeText">
+   <property name="geometry">
+    <rect>
+     <x>950</x>
+     <y>300</y>
+     <width>201</width>
+     <height>41</height>
+    </rect>
    </property>
   </widget>
  </widget>

@@ -2,7 +2,9 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.QtGui import QRegExpValidator, QIntValidator
-from PyQt5.QtCore import QRegExp
+from PyQt5.QtCore import QRegExp, QDate
+
+from datetime import date
 
 
 class UpdateEmployeeWindow(QDialog):
@@ -29,6 +31,7 @@ class UpdateEmployeeWindow(QDialog):
         self.EmpNameText.setValidator(string_validator)
         self.EmpPositionText.setValidator(string_validator)
         self.EmpSalaryText.setValidator(int_validator)
+        self.EmpCountryText.setValidator(string_validator)
 
         self.employee_to_modify = None
 
@@ -41,15 +44,18 @@ class UpdateEmployeeWindow(QDialog):
                 self.EmpNameText.setText(employee["name"])
                 self.EmpPositionText.setText(employee["position"])
                 self.EmpSalaryText.setText(str(employee["salary"]))
+                self.EmpCountryText.setText(employee["country"])
                 break
 
     # Used to update the chosen employee with the new data
     def update_employee(self):
         print("update_employee() is called")
-        if (self.check_emp()):
+        if self.check_emp():
             self.employee_to_modify["name"] = self.EmpNameText.text().strip()
             self.employee_to_modify["position"] = self.EmpPositionText.text().strip()
             self.employee_to_modify["salary"] = int(self.EmpSalaryText.text())
+            self.employee_to_modify["country"] = self.EmpCountryText.text().strip()
+            self.employee_to_modify["age"] = self.calculate_age(self.EmpAgeText.date())
 
             self.show_success_alert(self.employee_to_modify["name"])
 
@@ -64,18 +70,27 @@ class UpdateEmployeeWindow(QDialog):
         name = self.EmpNameText.text()
         position = self.EmpPositionText.text()
         salary = self.EmpSalaryText.text()
+        country = self.EmpCountryText.text()
 
         # Uesd to add all text data to this list
-        fields = [name, position, salary]
+        fields = [name, position, salary, country]
         for field in fields:
             # Checks if the text is empty or contains only whitespace
             if not field.strip():
                 return False
 
-        if int(salary) < 0:
+        if int(salary) < 0 and int(age) < 0:
             return False
 
         return True
+
+    def calculate_age(self, qdate):
+        print("calculate_age() is called")
+        birth_date = date(qdate.year(), qdate.month(), qdate.day())
+        today = date.today()
+        age = today.year - birth_date.year - (
+                    (today.month, today.day) < (birth_date.month, birth_date.day))
+        return age
 
     # An alert pops up to confirm that the employee is added successfully
     def show_success_alert(self, update_emp):

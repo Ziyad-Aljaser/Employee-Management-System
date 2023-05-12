@@ -2,7 +2,9 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QMessageBox
 from PyQt5.QtGui import QRegExpValidator, QIntValidator
-from PyQt5.QtCore import QRegExp
+from PyQt5.QtCore import QRegExp, QDate
+
+from datetime import date
 
 from Employee import Employee
 
@@ -32,16 +34,19 @@ class AddEmployeeWindow(QDialog):
         self.EmpNameText.setValidator(string_validator)
         self.EmpPositionText.setValidator(string_validator)
         self.EmpSalaryText.setValidator(int_validator)
+        self.EmpCountryText.setValidator(string_validator)
 
     def new_employee(self):
         print("new_employee() is called")
 
-        if(self.check_emp()):
+        if self.check_emp():
             new_emp = Employee(self.id)
 
             new_emp.name = self.EmpNameText.text().strip()
             new_emp.position = self.EmpPositionText.text().strip()
             new_emp.salary = int(self.EmpSalaryText.text())
+            new_emp.country = self.EmpCountryText.text().strip()
+            new_emp.age = self.calculate_age(self.EmpAgeText.date())
 
             self.emp_list.append(new_emp.get_employee())
             self.id += 1
@@ -50,6 +55,7 @@ class AddEmployeeWindow(QDialog):
             self.EmpNameText.clear()
             self.EmpPositionText.clear()
             self.EmpSalaryText.clear()
+            self.EmpCountryText.clear()
 
             self.show_success_alert(new_emp.name)
 
@@ -64,9 +70,10 @@ class AddEmployeeWindow(QDialog):
         name = self.EmpNameText.text()
         position = self.EmpPositionText.text()
         salary = self.EmpSalaryText.text()
+        country = self.EmpCountryText.text()
 
-        # Uesd to add all text data to this list
-        fields = [name, position, salary]
+        # Used to add all text data to this list
+        fields = [name, position, salary, country]
         for field in fields:
             # Checks if the text is empty or contains only whitespace
             if not field.strip():
@@ -76,6 +83,14 @@ class AddEmployeeWindow(QDialog):
             return False
 
         return True
+
+    def calculate_age(self, qdate):
+        print("calculate_age() is called")
+        birth_date = date(qdate.year(), qdate.month(), qdate.day())
+        today = date.today()
+        age = today.year - birth_date.year - (
+                    (today.month, today.day) < (birth_date.month, birth_date.day))
+        return age
 
     # An alert pops up to confirm that the employee is added successfully
     def show_success_alert(self, new_emp):

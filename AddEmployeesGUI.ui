@@ -263,7 +263,7 @@
     <string>Employee Age</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="EmpAgeText">
+  <widget class="QDateEdit" name="EmpAgeText">
    <property name="geometry">
     <rect>
      <x>950</x>
@@ -271,21 +271,6 @@
      <width>201</width>
      <height>41</height>
     </rect>
-   </property>
-   <property name="whatsThis">
-    <string>ref</string>
-   </property>
-   <property name="inputMask">
-    <string/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="placeholderText">
-    <string>Ex. 32</string>
-   </property>
-   <property name="clearButtonEnabled">
-    <bool>true</bool>
    </property>
   </widget>
  </widget>
