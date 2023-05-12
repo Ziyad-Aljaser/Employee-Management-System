@@ -28,9 +28,9 @@ class EmployeesDashboard(QDialog):
         self.employees_list = []
 
         # Fake Data
-        self.employees_list = [{"id": 1000, "name": "Ziyad", "position": "CEO", "salary": 50000},
-                                {"id": 1001, "name": "Fahad", "position": "CFO", "salary": 5000},
-                                {"id": 1002, "name": "Ahmed", "position": "HR", "salary": 500}]
+        self.employees_list = [{"id": 10000000000, "name": "Ziyad", "position": "CEO", "salary": 50000, "country": "Saudi Arabia", "age": 23},
+                                {"id": 1001, "name": "Fahad", "position": "CFO", "salary": 5000, "country": "Saudi Arabia", "age": 25},
+                                {"id": 1002, "name": "Ahmed", "position": "HR", "salary": 500, "country": "Saudi Arabia", "age": 24}]
         self.display_employees()
 
         # Used when the "Add Employee" button is clicked, and it opens a new window
@@ -64,15 +64,23 @@ class EmployeesDashboard(QDialog):
         self.tableWidget.horizontalHeader().setSectionResizeMode(
             QHeaderView.Stretch)
 
-        # Used to locate the delete/edit button index
+        # Used to locate the id column index
+        self.id_col_index = 0
+
+        # Used to locate the delete/edit column index
         self.delete_col_index = self.tableWidget.columnCount() - 1
         self.edit_col_index = self.tableWidget.columnCount() - 2
+
+        self.tableWidget.horizontalHeader().setSectionResizeMode(
+            self.id_col_index, QHeaderView.Fixed)
 
         # Used to design the delete/edit buttons width
         self.tableWidget.horizontalHeader().setSectionResizeMode(
             self.delete_col_index, QHeaderView.Fixed)
         self.tableWidget.horizontalHeader().setSectionResizeMode(
             self.edit_col_index, QHeaderView.Fixed)
+
+        self.tableWidget.horizontalHeader().resizeSection(self.id_col_index, 100)
 
         self.tableWidget.horizontalHeader().resizeSection(self.delete_col_index, 80)
         self.tableWidget.horizontalHeader().resizeSection(self.edit_col_index, 80)
@@ -117,6 +125,7 @@ class EmployeesDashboard(QDialog):
             self.tableWidget.horizontalHeader().showSection(self.delete_col_index)
             self.tableWidget.horizontalHeader().showSection(self.edit_col_index)
             self.noDataLabel.hide()
+
             row = 0
             self.tableWidget.setRowCount(len(self.employees_list))
 
@@ -138,6 +147,16 @@ class EmployeesDashboard(QDialog):
                 salary_item = QtWidgets.QTableWidgetItem(salary_converted)
                 salary_item.setToolTip(salary_converted)
                 self.tableWidget.setItem(row, 3, salary_item)
+
+                country_item = QtWidgets.QTableWidgetItem(
+                    str(employee["country"]))
+                country_item.setToolTip(str(employee["country"]))
+                self.tableWidget.setItem(row, 4, country_item)
+
+                age_item = QtWidgets.QTableWidgetItem(
+                    str(employee["age"]))
+                age_item.setToolTip(str(employee["age"]))
+                self.tableWidget.setItem(row, 5, age_item)
 
                 # Create a fix/delete buttons
                 edit_button = EditButton(self.tableWidget,
