@@ -25,7 +25,7 @@ class DeleteButton(QDialog):
             }
         """)
 
-        self.widget.setCellWidget(self.row, 5, self.del_button)
+        self.widget.setCellWidget(self.row, 7, self.del_button)
 
     # Remove the employee with the given ID from the emp_list
     def remove_employee(self, employee_id):

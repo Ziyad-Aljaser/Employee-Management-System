@@ -27,4 +27,4 @@ class EditButton(QDialog):
             }
         """)
 
-        self.widget.setCellWidget(self.row, 4, self.edit_button)
+        self.widget.setCellWidget(self.row, 6, self.edit_button)

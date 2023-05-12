@@ -23,7 +23,7 @@ class EmployeesDashboard(QDialog):
         loadUi("EmployeesGUI.ui", self)
 
         # Used to add new features to the employee table
-        self.edit_table_widget()
+        self.format_table_widget()
 
         self.employees_list = []
 
@@ -59,7 +59,7 @@ class EmployeesDashboard(QDialog):
         self.update_employee_window.find_current_emp(current_emp)
         self.widget.setCurrentIndex(2)
 
-    def edit_table_widget(self):
+    def format_table_widget(self):
         # Used to stretch the columns
         self.tableWidget.horizontalHeader().setSectionResizeMode(
             QHeaderView.Stretch)
