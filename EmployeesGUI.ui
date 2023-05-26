@@ -300,6 +300,22 @@
     <string>CSV Download</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="dataVisualizationButton">
+   <property name="geometry">
+    <rect>
+     <x>1030</x>
+     <y>720</y>
+     <width>291</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 15pt &quot;Segoe UI Black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Data Visualization</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

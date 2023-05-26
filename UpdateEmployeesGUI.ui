@@ -13,37 +13,6 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="background">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1342</width>
-     <height>833</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-image: url(:/newPrefix/EmployeeBackground.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>../../../Pictures/EmployeeBackground.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-   <property name="wordWrap">
-    <bool>false</bool>
-   </property>
-  </widget>
   <widget class="QLabel" name="EmpLabel">
    <property name="geometry">
     <rect>
@@ -267,6 +236,51 @@
     </rect>
    </property>
   </widget>
+  <widget class="QLabel" name="background">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1342</width>
+     <height>833</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/newPrefix/EmployeeBackground.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../../../Pictures/EmployeeBackground.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="wordWrap">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <zorder>background</zorder>
+  <zorder>EmpLabel</zorder>
+  <zorder>EmpButton</zorder>
+  <zorder>EmpNameText</zorder>
+  <zorder>EmpNameLabel</zorder>
+  <zorder>EmpPositionLabel</zorder>
+  <zorder>EmpPositionText</zorder>
+  <zorder>EmpSalaryLabel</zorder>
+  <zorder>EmpSalaryText</zorder>
+  <zorder>GoBackButton</zorder>
+  <zorder>EmpCountryLabel</zorder>
+  <zorder>EmpCountryText</zorder>
+  <zorder>EmpAgeLabel</zorder>
+  <zorder>EmpAgeText</zorder>
  </widget>
  <resources>
   <include location="../../../Downloads/BackgroundPic.qrc"/>
