@@ -9,6 +9,7 @@ from DeleteButton import DeleteButton
 from EditButton import EditButton
 
 from UpdateEmployeeWindow import UpdateEmployeeWindow
+from DataVisualizationWindow import DataVisualizationWindow
 
 class EmployeesDashboard(QDialog):
 
@@ -19,6 +20,10 @@ class EmployeesDashboard(QDialog):
         self.widget.setFixedHeight(833)
         self.widget.setFixedWidth(1342)
         self.update_employee_window = None
+        self.data_visualization_window = None
+        self.index = 1  # Used to organize the data_visualization/update_employee windows
+        self.update_emp_index = None
+        self.data_vis_index = None
 
         loadUi("EmployeesGUI.ui", self)
 
@@ -35,6 +40,8 @@ class EmployeesDashboard(QDialog):
 
         # Used when the "Add Employee" button is clicked, and it opens a new window
         self.addEmployeeButton.clicked.connect(self.switch_dialog_to_new_emp)
+
+        self.dataVisualizationButton.clicked.connect(self.switch_dialog_to_data_visualization)
 
         self.CSV_Download.clicked.connect(self.download_csv)
 
@@ -56,8 +63,25 @@ class EmployeesDashboard(QDialog):
                                                           self.employees_list)
             self.widget.addWidget(self.update_employee_window)
 
+            self.index = self.index + 1
+            self.update_emp_index = self.index
+
         self.update_employee_window.find_current_emp(current_emp)
-        self.widget.setCurrentIndex(2)
+        self.widget.setCurrentIndex(self.update_emp_index)
+
+    # Used to switch the window to the DataVisualization class
+    def switch_dialog_to_data_visualization(self):
+        print("switch_dialog_to_data_visualization() is called")
+        if self.data_visualization_window is None:
+            self.data_visualization_window = DataVisualizationWindow()
+            self.widget.addWidget(self.data_visualization_window)
+
+            self.index = self.index + 1
+            self.data_vis_index = self.index
+
+        self.widget.setCurrentIndex(self.data_vis_index)
+
+
 
     def format_table_widget(self):
         # Used to stretch the columns

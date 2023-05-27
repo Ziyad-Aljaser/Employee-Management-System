@@ -8,8 +8,6 @@ from PyQt5.QtWidgets import QApplication
 
 from EmployeesDashboard import EmployeesDashboard
 from AddEmployeeWindow import AddEmployeeWindow
-from UpdateEmployeeWindow import UpdateEmployeeWindow
-
 
 class Main:
     # main window
