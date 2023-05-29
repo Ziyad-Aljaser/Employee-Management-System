@@ -11,6 +11,7 @@ from EditButton import EditButton
 from UpdateEmployeeWindow import UpdateEmployeeWindow
 from DataVisualizationWindow import DataVisualizationWindow
 
+
 class EmployeesDashboard(QDialog):
 
     def __init__(self):
@@ -33,15 +34,87 @@ class EmployeesDashboard(QDialog):
         self.employees_list = []
 
         # Fake Data
-        self.employees_list = [{"id": 10000000000, "name": "Ziyad", "position": "CEO", "salary": 50000, "country": "Saudi Arabia", "age": 23},
-                                {"id": 1001, "name": "Fahad", "position": "CFO", "salary": 5000, "country": "Saudi Arabia", "age": 25},
-                                {"id": 1002, "name": "Ahmed", "position": "HR", "salary": 500, "country": "Saudi Arabia", "age": 24}]
+        self.employees_list = [
+            {"id": 1000, "name": "Ziyad", "position": "CEO",
+             "salary": 125000, "country": "USA", "age": 54},
+            {"id": 1001, "name": "Fahad", "position": "CFO",
+             "salary": 115000, "country": "UK", "age": 52},
+            {"id": 1002, "name": "Ahmed", "position": "CTO",
+             "salary": 112000, "country": "Canada", "age": 49},
+            {"id": 1003, "name": "Mohammed", "position": "COO",
+             "salary": 109000, "country": "USA", "age": 50},
+            {"id": 1004, "name": "Abdullah", "position": "Human Resources",
+             "salary": 86000, "country": "UK", "age": 45},
+            {"id": 1005, "name": "Omar", "position": "Product Manager",
+             "salary": 96000, "country": "Canada", "age": 41},
+            {"id": 1006, "name": "Salem", "position": "Product Manager",
+             "salary": 92000, "country": "USA", "age": 43},
+            {"id": 1007, "name": "Ali", "position": "Software Engineer",
+             "salary": 89000, "country": "UK", "age": 36},
+            {"id": 1008, "name": "Adel", "position": "Software Engineer",
+             "salary": 84000, "country": "Canada", "age": 35},
+            {"id": 1009, "name": "Hassan", "position": "Software Engineer",
+             "salary": 82000, "country": "USA", "age": 38},
+            {"id": 1010, "name": "Youssef", "position": "Software Engineer",
+             "salary": 81000, "country": "UK", "age": 34},
+            {"id": 1011, "name": "Karim", "position": "Software Engineer",
+             "salary": 80000, "country": "Canada", "age": 33},
+            {"id": 1012, "name": "Ismail", "position": "Software Engineer",
+             "salary": 79000, "country": "USA", "age": 32},
+            {"id": 1013, "name": "Musa", "position": "Software Engineer",
+             "salary": 78000, "country": "UK", "age": 35},
+            {"id": 1014, "name": "Munir", "position": "Software Engineer",
+             "salary": 77000, "country": "Canada", "age": 36},
+            {"id": 1015, "name": "Jamal", "position": "Data Analyst",
+             "salary": 70000, "country": "USA", "age": 28},
+            {"id": 1016, "name": "Tariq", "position": "Data Analyst",
+             "salary": 69000, "country": "UK", "age": 29},
+            {"id": 1017, "name": "Rania", "position": "Data Analyst",
+             "salary": 68000, "country": "Canada", "age": 31},
+            {"id": 1018, "name": "Lina", "position": "Data Analyst",
+             "salary": 67000, "country": "USA", "age": 30},
+            {"id": 1019, "name": "Nour", "position": "Data Analyst",
+             "salary": 66000, "country": "UK", "age": 29},
+            {"id": 1020, "name": "Sara", "position": "Data Analyst",
+             "salary": 65000, "country": "Canada", "age": 27},
+            {"id": 1021, "name": "Rami", "position": "Graphic Designer",
+             "salary": 62000, "country": "USA", "age": 30},
+            {"id": 1022, "name": "Aya", "position": "Graphic Designer",
+             "salary": 61000, "country": "UK", "age": 28},
+            {"id": 1023, "name": "Nasser", "position": "Graphic Designer",
+             "salary": 60000, "country": "Canada", "age": 31},
+            {"id": 1024, "name": "Layla", "position": "Sales Manager",
+             "salary": 95000, "country": "USA", "age": 39},
+            {"id": 1025, "name": "Hana", "position": "Sales Manager",
+             "salary": 90000, "country": "UK", "age": 37},
+            {"id": 1026, "name": "Khalid", "position": "Sales Manager",
+             "salary": 88000, "country": "Canada", "age": 40},
+            {"id": 1027, "name": "Samira", "position": "Marketing Manager",
+             "salary": 105000, "country": "USA", "age": 42},
+            {"id": 1028, "name": "Rania", "position": "Marketing Manager",
+             "salary": 98000, "country": "UK", "age": 38},
+            {"id": 1029, "name": "Yasin", "position": "Marketing Manager",
+             "salary": 94000, "country": "Canada", "age": 41},
+            {"id": 1030, "name": "Nadia", "position": "Human Resources Manager",
+             "salary": 100000, "country": "USA", "age": 46},
+            {"id": 1031, "name": "Amir", "position": "Human Resources Manager",
+             "salary": 93000, "country": "UK", "age": 44},
+            {"id": 1032, "name": "Maha", "position": "Human Resources Manager",
+             "salary": 91000, "country": "Canada", "age": 43},
+            {"id": 1033, "name": "Khaled", "position": "Project Manager",
+             "salary": 107000, "country": "USA", "age": 47},
+            {"id": 1034, "name": "Rasha", "position": "Project Manager",
+             "salary": 102000, "country": "UK", "age": 39},
+            {"id": 1035, "name": "Hassan", "position": "Project Manager",
+             "salary": 98000, "country": "Canada", "age": 41}
+        ]
+
         self.display_employees()
 
         # Used when the "Add Employee" button is clicked, and it opens a new window
         self.addEmployeeButton.clicked.connect(self.switch_dialog_to_new_emp)
 
-        self.dataVisualizationButton.clicked.connect(self.switch_dialog_to_data_visualization)
+        self.dataVisualizationButton.clicked.connect(self.switch_dialog_to_data_vis)
 
         self.CSV_Download.clicked.connect(self.download_csv)
 
@@ -70,7 +143,7 @@ class EmployeesDashboard(QDialog):
         self.widget.setCurrentIndex(self.update_emp_index)
 
     # Used to switch the window to the DataVisualization class
-    def switch_dialog_to_data_visualization(self):
+    def switch_dialog_to_data_vis(self):
         print("switch_dialog_to_data_visualization() is called")
         if self.data_visualization_window is None:
             self.data_visualization_window = DataVisualizationWindow(self.widget,
