@@ -66,7 +66,7 @@
   <widget class="QPushButton" name="CountryRepButton">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>40</x>
      <y>320</y>
      <width>361</width>
      <height>121</height>
@@ -77,6 +77,54 @@
    </property>
    <property name="text">
     <string> Country Representation</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="SalaryDisButton">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>320</y>
+     <width>361</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 15pt &quot;Segoe UI Black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Salary Distribution</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="AgeSalButton">
+   <property name="geometry">
+    <rect>
+     <x>940</x>
+     <y>320</y>
+     <width>361</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 15pt &quot;Segoe UI Black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Age vs Salary</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="GoBackButton">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>650</y>
+     <width>541</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 25pt &quot;Segoe UI Black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Go Back</string>
    </property>
   </widget>
  </widget>

@@ -73,7 +73,8 @@ class EmployeesDashboard(QDialog):
     def switch_dialog_to_data_visualization(self):
         print("switch_dialog_to_data_visualization() is called")
         if self.data_visualization_window is None:
-            self.data_visualization_window = DataVisualizationWindow()
+            self.data_visualization_window = DataVisualizationWindow(self.widget,
+                                                          self.employees_list)
             self.widget.addWidget(self.data_visualization_window)
 
             self.index = self.index + 1
