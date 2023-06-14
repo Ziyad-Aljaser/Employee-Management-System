@@ -5,8 +5,7 @@ from PyQt5.QtWidgets import QDialog, QTableWidget, QHeaderView,\
 from PyQt5.QtCore import QCoreApplication, Qt
 import csv
 
-from DeleteButton import DeleteButton
-from EditButton import EditButton
+from Buttons import EditButton, DeleteButton
 
 from UpdateEmployeeWindow import UpdateEmployeeWindow
 from DataVisualizationWindow import DataVisualizationWindow
@@ -154,8 +153,6 @@ class EmployeesDashboard(QDialog):
             self.data_vis_index = self.index
 
         self.widget.setCurrentIndex(self.data_vis_index)
-
-
 
     def format_table_widget(self):
         # Used to stretch the columns
@@ -321,4 +318,3 @@ class EmployeesDashboard(QDialog):
         self.tableWidget.clearSelection()
         # Call the superclass implementation to handle the event
         super().mousePressEvent(event)
-
