@@ -32,81 +32,81 @@ class EmployeesDashboard(QDialog):
 
         self.employees_list = []
 
-        # Fake Data
-        self.employees_list = [
-            {"id": 1000, "name": "Hans", "position": "CEO",
-             "salary": 125000, "country": "Germany", "age": 54},
-            {"id": 1001, "name": "Hiroshi", "position": "CFO",
-             "salary": 115000, "country": "Japan", "age": 52},
-            {"id": 1002, "name": "Carlos", "position": "CTO",
-             "salary": 112000, "country": "Brazil", "age": 49},
-            {"id": 1003, "name": "Giovanni", "position": "COO",
-             "salary": 109000, "country": "Italy", "age": 50},
-            {"id": 1004, "name": "Liam", "position": "Human Resources",
-             "salary": 86000, "country": "Australia", "age": 45},
-            {"id": 1005, "name": "José", "position": "Product Manager",
-             "salary": 96000, "country": "Brazil", "age": 41},
-            {"id": 1006, "name": "Friedrich", "position": "Product Manager",
-             "salary": 92000, "country": "Germany", "age": 43},
-            {"id": 1007, "name": "Kenji", "position": "Software Engineer",
-             "salary": 89000, "country": "Japan", "age": 36},
-            {"id": 1008, "name": "Oscar", "position": "Software Engineer",
-             "salary": 84000, "country": "Australia", "age": 35},
-            {"id": 1009, "name": "Francesco", "position": "Software Engineer",
-             "salary": 82000, "country": "Italy", "age": 38},
-            {"id": 1010, "name": "Klaus", "position": "Software Engineer",
-             "salary": 81000, "country": "Germany", "age": 34},
-            {"id": 1011, "name": "Luiz", "position": "Software Engineer",
-             "salary": 80000, "country": "Brazil", "age": 33},
-            {"id": 1012, "name": "Leonardo", "position": "Software Engineer",
-             "salary": 79000, "country": "Italy", "age": 32},
-            {"id": 1013, "name": "Jack", "position": "Software Engineer",
-             "salary": 78000, "country": "Australia", "age": 35},
-            {"id": 1014, "name": "Takeshi", "position": "Software Engineer",
-             "salary": 77000, "country": "Japan", "age": 36},
-            {"id": 1015, "name": "Johannes", "position": "Data Analyst",
-             "salary": 70000, "country": "Germany", "age": 28},
-            {"id": 1016, "name": "Oliver", "position": "Data Analyst",
-             "salary": 69000, "country": "United Kingdom", "age": 29},
-            {"id": 1017, "name": "Olivia", "position": "Data Analyst",
-             "salary": 68000, "country": "United States", "age": 31},
-            {"id": 1018, "name": "Sophia", "position": "Data Analyst",
-             "salary": 67000, "country": "United States", "age": 30},
-            {"id": 1019, "name": "Amelia", "position": "Data Analyst",
-             "salary": 66000, "country": "United Kingdom", "age": 29},
-            {"id": 1020, "name": "Emma", "position": "Data Analyst",
-             "salary": 65000, "country": "Canada", "age": 27},
-            {"id": 1021, "name": "Liam", "position": "Graphic Designer",
-             "salary": 62000, "country": "United States", "age": 30},
-            {"id": 1022, "name": "Isabella", "position": "Graphic Designer",
-             "salary": 61000, "country": "United Kingdom", "age": 28},
-            {"id": 1023, "name": "Aiden", "position": "Graphic Designer",
-             "salary": 60000, "country": "Canada", "age": 31},
-            {"id": 1024, "name": "Mia", "position": "Sales Manager",
-             "salary": 95000, "country": "United States", "age": 39},
-            {"id": 1025, "name": "Ava", "position": "Sales Manager",
-             "salary": 90000, "country": "United Kingdom", "age": 37},
-            {"id": 1026, "name": "Jackson", "position": "Sales Manager",
-             "salary": 88000, "country": "Canada", "age": 40},
-            {"id": 1027, "name": "Madison", "position": "Marketing Manager",
-             "salary": 105000, "country": "United States", "age": 42},
-            {"id": 1028, "name": "Sophie", "position": "Marketing Manager",
-             "salary": 98000, "country": "United Kingdom", "age": 38},
-            {"id": 1029, "name": "Lucas", "position": "Marketing Manager",
-             "salary": 94000, "country": "Canada", "age": 41},
-            {"id": 1030, "name": "Charlotte", "position": "Human Resources Manager",
-             "salary": 100000, "country": "United States", "age": 46},
-            {"id": 1031, "name": "Jack", "position": "Human Resources Manager",
-             "salary": 93000, "country": "United Kingdom", "age": 44},
-            {"id": 1032, "name": "Emily", "position": "Human Resources Manager",
-             "salary": 91000, "country": "Canada", "age": 43},
-            {"id": 1033, "name": "Noah", "position": "Project Manager",
-             "salary": 107000, "country": "United States", "age": 47},
-            {"id": 1034, "name": "Grace", "position": "Project Manager",
-             "salary": 102000, "country": "United Kingdom", "age": 39},
-            {"id": 1035, "name": "Logan", "position": "Project Manager",
-             "salary": 98000, "country": "United States", "age": 41}
-        ]
+        # # Fake Data
+        # self.employees_list = [
+        #     {"id": 1000, "name": "Hans", "position": "CEO",
+        #      "salary": 125000, "country": "Germany", "age": 54},
+        #     {"id": 1001, "name": "Hiroshi", "position": "CFO",
+        #      "salary": 115000, "country": "Japan", "age": 52},
+        #     {"id": 1002, "name": "Carlos", "position": "CTO",
+        #      "salary": 112000, "country": "Brazil", "age": 49},
+        #     {"id": 1003, "name": "Giovanni", "position": "COO",
+        #      "salary": 109000, "country": "Italy", "age": 50},
+        #     {"id": 1004, "name": "Liam", "position": "Human Resources",
+        #      "salary": 86000, "country": "Australia", "age": 45},
+        #     {"id": 1005, "name": "José", "position": "Product Manager",
+        #      "salary": 96000, "country": "Brazil", "age": 41},
+        #     {"id": 1006, "name": "Friedrich", "position": "Product Manager",
+        #      "salary": 92000, "country": "Germany", "age": 43},
+        #     {"id": 1007, "name": "Kenji", "position": "Software Engineer",
+        #      "salary": 89000, "country": "Japan", "age": 36},
+        #     {"id": 1008, "name": "Oscar", "position": "Software Engineer",
+        #      "salary": 84000, "country": "Australia", "age": 35},
+        #     {"id": 1009, "name": "Francesco", "position": "Software Engineer",
+        #      "salary": 82000, "country": "Italy", "age": 38},
+        #     {"id": 1010, "name": "Klaus", "position": "Software Engineer",
+        #      "salary": 81000, "country": "Germany", "age": 34},
+        #     {"id": 1011, "name": "Luiz", "position": "Software Engineer",
+        #      "salary": 80000, "country": "Brazil", "age": 33},
+        #     {"id": 1012, "name": "Leonardo", "position": "Software Engineer",
+        #      "salary": 79000, "country": "Italy", "age": 32},
+        #     {"id": 1013, "name": "Jack", "position": "Software Engineer",
+        #      "salary": 78000, "country": "Australia", "age": 35},
+        #     {"id": 1014, "name": "Takeshi", "position": "Software Engineer",
+        #      "salary": 77000, "country": "Japan", "age": 36},
+        #     {"id": 1015, "name": "Johannes", "position": "Data Analyst",
+        #      "salary": 70000, "country": "Germany", "age": 28},
+        #     {"id": 1016, "name": "Oliver", "position": "Data Analyst",
+        #      "salary": 69000, "country": "United Kingdom", "age": 29},
+        #     {"id": 1017, "name": "Olivia", "position": "Data Analyst",
+        #      "salary": 68000, "country": "United States", "age": 31},
+        #     {"id": 1018, "name": "Sophia", "position": "Data Analyst",
+        #      "salary": 67000, "country": "United States", "age": 30},
+        #     {"id": 1019, "name": "Amelia", "position": "Data Analyst",
+        #      "salary": 66000, "country": "United Kingdom", "age": 29},
+        #     {"id": 1020, "name": "Emma", "position": "Data Analyst",
+        #      "salary": 65000, "country": "Canada", "age": 27},
+        #     {"id": 1021, "name": "Liam", "position": "Graphic Designer",
+        #      "salary": 62000, "country": "United States", "age": 30},
+        #     {"id": 1022, "name": "Isabella", "position": "Graphic Designer",
+        #      "salary": 61000, "country": "United Kingdom", "age": 28},
+        #     {"id": 1023, "name": "Aiden", "position": "Graphic Designer",
+        #      "salary": 60000, "country": "Canada", "age": 31},
+        #     {"id": 1024, "name": "Mia", "position": "Sales Manager",
+        #      "salary": 95000, "country": "United States", "age": 39},
+        #     {"id": 1025, "name": "Ava", "position": "Sales Manager",
+        #      "salary": 90000, "country": "United Kingdom", "age": 37},
+        #     {"id": 1026, "name": "Jackson", "position": "Sales Manager",
+        #      "salary": 88000, "country": "Canada", "age": 40},
+        #     {"id": 1027, "name": "Madison", "position": "Marketing Manager",
+        #      "salary": 105000, "country": "United States", "age": 42},
+        #     {"id": 1028, "name": "Sophie", "position": "Marketing Manager",
+        #      "salary": 98000, "country": "United Kingdom", "age": 38},
+        #     {"id": 1029, "name": "Lucas", "position": "Marketing Manager",
+        #      "salary": 94000, "country": "Canada", "age": 41},
+        #     {"id": 1030, "name": "Charlotte", "position": "Human Resources Manager",
+        #      "salary": 100000, "country": "United States", "age": 46},
+        #     {"id": 1031, "name": "Jack", "position": "Human Resources Manager",
+        #      "salary": 93000, "country": "United Kingdom", "age": 44},
+        #     {"id": 1032, "name": "Emily", "position": "Human Resources Manager",
+        #      "salary": 91000, "country": "Canada", "age": 43},
+        #     {"id": 1033, "name": "Noah", "position": "Project Manager",
+        #      "salary": 107000, "country": "United States", "age": 47},
+        #     {"id": 1034, "name": "Grace", "position": "Project Manager",
+        #      "salary": 102000, "country": "United Kingdom", "age": 39},
+        #     {"id": 1035, "name": "Logan", "position": "Project Manager",
+        #      "salary": 98000, "country": "United States", "age": 41}
+        # ]
 
         self.display_employees()
 
@@ -114,6 +114,8 @@ class EmployeesDashboard(QDialog):
         self.addEmployeeButton.clicked.connect(self.switch_dialog_to_new_emp)
 
         self.dataVisualizationButton.clicked.connect(self.switch_dialog_to_data_vis)
+
+        self.CSV_Import.clicked.connect(self.import__csv)
 
         self.CSV_Download.clicked.connect(self.download_csv)
 
@@ -274,6 +276,23 @@ class EmployeesDashboard(QDialog):
 
                 row += 1
 
+    def import__csv(self):
+        print("import__csv is called")
+        fileName, _ = QFileDialog.getOpenFileName(self, 'Open file', './')
+
+        if fileName:
+            self.employees_list = []
+            with open(fileName, 'r') as f:
+                csvReader = csv.DictReader(f)
+                for row in csvReader:
+                    row["id"] = int(row["id"])
+                    row["salary"] = int(row["salary"])
+                    row["age"] = int(row["age"])
+                    self.employees_list.append(row)
+
+        print(self.employees_list)
+        self.display_employees()
+
     def download_csv(self):
         # Open a save file dialog and get the chosen file path and name
         filename, _ = QFileDialog.getSaveFileName(self, "Save CSV", "",
@@ -286,7 +305,7 @@ class EmployeesDashboard(QDialog):
                 filename += '.csv'
 
             # Column names of the data
-            fields = ["id", "name", "position", "salary"]
+            fields = ["id", "name", "position", "salary", "country", "age"]
 
             # Used to write to the CSV file
             with open(filename, mode='w', newline='') as csvfile:
@@ -298,7 +317,7 @@ class EmployeesDashboard(QDialog):
 
                 # Used to write the data rows
                 for row in self.employees_list:
-                    csvwriter.writerow([row["id"], row["name"], row["position"], row["salary"]])
+                    csvwriter.writerow([row["id"], row["name"], row["position"], row["salary"], row["country"], row["age"]])
 
             self.show_success_alert(filename)
 
