@@ -281,16 +281,19 @@ class EmployeesDashboard(QDialog):
         fileName, _ = QFileDialog.getOpenFileName(self, 'Open file', './')
 
         if fileName:
-            self.employees_list = []
-            with open(fileName, 'r') as f:
-                csvReader = csv.DictReader(f)
-                for row in csvReader:
-                    row["id"] = int(row["id"])
-                    row["salary"] = int(row["salary"])
-                    row["age"] = int(row["age"])
-                    self.employees_list.append(row)
+            try:
+                self.employees_list = []
+                with open(fileName, 'r') as f:
+                    csvReader = csv.DictReader(f)
+                    for row in csvReader:
+                        row["id"] = int(row["id"])
+                        row["salary"] = int(row["salary"])
+                        row["age"] = int(row["age"])
+                        self.employees_list.append(row)
+            except Exception as e:
+                QMessageBox.warning(self, 'Error',
+                                    'Failed to Import The File: ' + fileName)
 
-        print(self.employees_list)
         self.display_employees()
 
     def download_csv(self):
