@@ -14,7 +14,7 @@ class EditButton(QDialog):
 
         # Create a new button for each row with specific style
         self.edit_button = QPushButton()
-        self.edit_button.setIcon(QIcon('pics/Edit_Icon.png'))
+        self.edit_button.setIcon(QIcon('assets/Edit_Icon.png'))
         self.edit_button.setStyleSheet("""
             QPushButton {
                 background-color: white;
