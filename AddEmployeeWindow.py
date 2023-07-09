@@ -92,6 +92,9 @@ class AddEmployeeWindow(QDialog):
                     (today.month, today.day) < (birth_date.month, birth_date.day))
         return age
 
+    def generate_id(self):
+        pass
+
     # An alert pops up to confirm that the employee is added successfully
     def show_success_alert(self, new_emp):
         msg = QMessageBox()
