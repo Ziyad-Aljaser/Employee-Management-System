@@ -5,6 +5,7 @@ from PyQt5.QtGui import QRegExpValidator, QIntValidator
 from PyQt5.QtCore import QRegExp, QDate
 
 from datetime import date
+import random
 
 from Employee import Employee
 
@@ -17,7 +18,7 @@ class AddEmployeeWindow(QDialog):
         self.widget = widget
         self.display_employees_func = func
         self.emp_list = emp_list
-        self.id = 1003
+        self.id = self.generate_id()
 
         loadUi("AddEmployeesGUI.ui", self)
 
@@ -93,7 +94,11 @@ class AddEmployeeWindow(QDialog):
         return age
 
     def generate_id(self):
-        pass
+        while True:
+            id = random.randint(100000, 999999)  # Generate a random 6-digit number
+            if id not in self.emp_list:
+                break
+        return id
 
     # An alert pops up to confirm that the employee is added successfully
     def show_success_alert(self, new_emp):
