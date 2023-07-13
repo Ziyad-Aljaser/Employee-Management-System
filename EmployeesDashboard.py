@@ -3,10 +3,11 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QTableWidget, QHeaderView,\
      QTableWidgetItem, QAbstractItemView, QFileDialog, QMessageBox
 from PyQt5.QtCore import QCoreApplication, Qt
+
 import csv
+import json
 
 from Buttons import EditButton, DeleteButton
-
 from UpdateEmployeeWindow import UpdateEmployeeWindow
 from DataVisualizationWindow import DataVisualizationWindow
 
@@ -21,7 +22,7 @@ class EmployeesDashboard(QDialog):
         self.widget.setFixedWidth(1342)
         self.update_employee_window = None
         self.data_visualization_window = None
-        self.index = 1  # Used to organize the data_visualization/update_employee windows
+        self.index = 1  # Used to control data_visualization/update_employee windows
         self.update_emp_index = None
         self.data_vis_index = None
 
@@ -32,81 +33,10 @@ class EmployeesDashboard(QDialog):
 
         self.employees_list = []
 
-        # # Fake Data
-        # self.employees_list = [
-        #     {"id": 1000, "name": "Hans", "position": "CEO",
-        #      "salary": 125000, "country": "Germany", "age": 54},
-        #     {"id": 1001, "name": "Hiroshi", "position": "CFO",
-        #      "salary": 115000, "country": "Japan", "age": 52},
-        #     {"id": 1002, "name": "Carlos", "position": "CTO",
-        #      "salary": 112000, "country": "Brazil", "age": 49},
-        #     {"id": 1003, "name": "Giovanni", "position": "COO",
-        #      "salary": 109000, "country": "Italy", "age": 50},
-        #     {"id": 1004, "name": "Liam", "position": "Human Resources",
-        #      "salary": 86000, "country": "Australia", "age": 45},
-        #     {"id": 1005, "name": "José", "position": "Product Manager",
-        #      "salary": 96000, "country": "Brazil", "age": 41},
-        #     {"id": 1006, "name": "Friedrich", "position": "Product Manager",
-        #      "salary": 92000, "country": "Germany", "age": 43},
-        #     {"id": 1007, "name": "Kenji", "position": "Software Engineer",
-        #      "salary": 89000, "country": "Japan", "age": 36},
-        #     {"id": 1008, "name": "Oscar", "position": "Software Engineer",
-        #      "salary": 84000, "country": "Australia", "age": 35},
-        #     {"id": 1009, "name": "Francesco", "position": "Software Engineer",
-        #      "salary": 82000, "country": "Italy", "age": 38},
-        #     {"id": 1010, "name": "Klaus", "position": "Software Engineer",
-        #      "salary": 81000, "country": "Germany", "age": 34},
-        #     {"id": 1011, "name": "Luiz", "position": "Software Engineer",
-        #      "salary": 80000, "country": "Brazil", "age": 33},
-        #     {"id": 1012, "name": "Leonardo", "position": "Software Engineer",
-        #      "salary": 79000, "country": "Italy", "age": 32},
-        #     {"id": 1013, "name": "Jack", "position": "Software Engineer",
-        #      "salary": 78000, "country": "Australia", "age": 35},
-        #     {"id": 1014, "name": "Takeshi", "position": "Software Engineer",
-        #      "salary": 77000, "country": "Japan", "age": 36},
-        #     {"id": 1015, "name": "Johannes", "position": "Data Analyst",
-        #      "salary": 70000, "country": "Germany", "age": 28},
-        #     {"id": 1016, "name": "Oliver", "position": "Data Analyst",
-        #      "salary": 69000, "country": "United Kingdom", "age": 29},
-        #     {"id": 1017, "name": "Olivia", "position": "Data Analyst",
-        #      "salary": 68000, "country": "United States", "age": 31},
-        #     {"id": 1018, "name": "Sophia", "position": "Data Analyst",
-        #      "salary": 67000, "country": "United States", "age": 30},
-        #     {"id": 1019, "name": "Amelia", "position": "Data Analyst",
-        #      "salary": 66000, "country": "United Kingdom", "age": 29},
-        #     {"id": 1020, "name": "Emma", "position": "Data Analyst",
-        #      "salary": 65000, "country": "Canada", "age": 27},
-        #     {"id": 1021, "name": "Liam", "position": "Graphic Designer",
-        #      "salary": 62000, "country": "United States", "age": 30},
-        #     {"id": 1022, "name": "Isabella", "position": "Graphic Designer",
-        #      "salary": 61000, "country": "United Kingdom", "age": 28},
-        #     {"id": 1023, "name": "Aiden", "position": "Graphic Designer",
-        #      "salary": 60000, "country": "Canada", "age": 31},
-        #     {"id": 1024, "name": "Mia", "position": "Sales Manager",
-        #      "salary": 95000, "country": "United States", "age": 39},
-        #     {"id": 1025, "name": "Ava", "position": "Sales Manager",
-        #      "salary": 90000, "country": "United Kingdom", "age": 37},
-        #     {"id": 1026, "name": "Jackson", "position": "Sales Manager",
-        #      "salary": 88000, "country": "Canada", "age": 40},
-        #     {"id": 1027, "name": "Madison", "position": "Marketing Manager",
-        #      "salary": 105000, "country": "United States", "age": 42},
-        #     {"id": 1028, "name": "Sophie", "position": "Marketing Manager",
-        #      "salary": 98000, "country": "United Kingdom", "age": 38},
-        #     {"id": 1029, "name": "Lucas", "position": "Marketing Manager",
-        #      "salary": 94000, "country": "Canada", "age": 41},
-        #     {"id": 1030, "name": "Charlotte", "position": "Human Resources Manager",
-        #      "salary": 100000, "country": "United States", "age": 46},
-        #     {"id": 1031, "name": "Jack", "position": "Human Resources Manager",
-        #      "salary": 93000, "country": "United Kingdom", "age": 44},
-        #     {"id": 1032, "name": "Emily", "position": "Human Resources Manager",
-        #      "salary": 91000, "country": "Canada", "age": 43},
-        #     {"id": 1033, "name": "Noah", "position": "Project Manager",
-        #      "salary": 107000, "country": "United States", "age": 47},
-        #     {"id": 1034, "name": "Grace", "position": "Project Manager",
-        #      "salary": 102000, "country": "United Kingdom", "age": 39},
-        #     {"id": 1035, "name": "Logan", "position": "Project Manager",
-        #      "salary": 98000, "country": "United States", "age": 41}
-        # ]
+        # Fake Data
+        with open('data/Sample_Employee_Data.json', 'r') as f:
+            # Used to load each line as a json object and appends to the list
+            self.employees_list = json.load(f)
 
         self.display_employees()
 
