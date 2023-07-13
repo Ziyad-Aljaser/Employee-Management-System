@@ -57,7 +57,6 @@ class DeleteButton(QDialog):
 
     # Remove the employee with the given ID from the emp_list
     def remove_employee(self, employee_id):
-        print("remove_employee() is called")
         for employee in self.emp_list:
             if employee["id"] == employee_id:
                 print(employee)

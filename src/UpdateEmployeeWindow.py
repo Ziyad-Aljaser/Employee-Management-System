@@ -10,7 +10,6 @@ from datetime import date
 class UpdateEmployeeWindow(QDialog):
 
     def __init__(self, widget, func, emp_list):
-        print("UpdateEmployeeWindow class is called")
         super(UpdateEmployeeWindow, self).__init__()
         self.widget = widget
         self.display_employees_func = func
@@ -37,7 +36,6 @@ class UpdateEmployeeWindow(QDialog):
 
     # Used to locate the chosen employee
     def find_current_emp(self, employee_id):
-        print("find_current_emp() is called")
         for employee in self.emp_list:
             if employee["id"] == employee_id:
                 self.employee_to_modify = employee
@@ -49,7 +47,6 @@ class UpdateEmployeeWindow(QDialog):
 
     # Used to update the chosen employee with the new data
     def update_employee(self):
-        print("update_employee() is called")
         if self.check_emp():
             self.employee_to_modify["name"] = self.EmpNameText.text().strip()
             self.employee_to_modify["position"] = self.EmpPositionText.text().strip()
@@ -66,7 +63,6 @@ class UpdateEmployeeWindow(QDialog):
 
     # Used to check if all fields have data and the salary is not negative
     def check_emp(self):
-        print("check_emp() is called")
         name = self.EmpNameText.text()
         position = self.EmpPositionText.text()
         salary = self.EmpSalaryText.text()
@@ -85,7 +81,6 @@ class UpdateEmployeeWindow(QDialog):
         return True
 
     def calculate_age(self, qdate):
-        print("calculate_age() is called")
         birth_date = date(qdate.year(), qdate.month(), qdate.day())
         today = date.today()
         age = today.year - birth_date.year - (

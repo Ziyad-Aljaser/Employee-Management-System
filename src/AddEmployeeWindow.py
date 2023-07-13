@@ -38,7 +38,6 @@ class AddEmployeeWindow(QDialog):
         self.EmpCountryText.setValidator(string_validator)
 
     def new_employee(self):
-        print("new_employee() is called")
 
         if self.check_emp():
             new_emp = Employee(self.id)
@@ -67,7 +66,6 @@ class AddEmployeeWindow(QDialog):
 
     # Used to check if all fields have data and the salary is not negative
     def check_emp(self):
-        print("check_emp() is called")
         name = self.EmpNameText.text()
         position = self.EmpPositionText.text()
         salary = self.EmpSalaryText.text()
@@ -86,7 +84,6 @@ class AddEmployeeWindow(QDialog):
         return True
 
     def calculate_age(self, qdate):
-        print("calculate_age() is called")
         birth_date = date(qdate.year(), qdate.month(), qdate.day())
         today = date.today()
         age = today.year - birth_date.year - (
