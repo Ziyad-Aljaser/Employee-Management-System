@@ -32,13 +32,13 @@
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/newPrefix/EmployeeBackground.png);</string>
+    <string notr="true">background-image: url(:/assets/EmployeeBackground.png);</string>
    </property>
    <property name="text">
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../../../Pictures/EmployeeBackground.png</pixmap>
+    <pixmap>./assets/EmployeeBackground.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>

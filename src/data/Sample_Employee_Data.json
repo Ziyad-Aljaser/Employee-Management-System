@@ -4,7 +4,7 @@
     {"id": 345678, "name": "Carlos", "position": "CTO", "salary": 112000, "country": "Brazil", "age": 49},
     {"id": 456789, "name": "Giovanni", "position": "COO", "salary": 109000, "country": "Italy", "age": 50},
     {"id": 567890, "name": "Liam", "position": "Human Resources", "salary": 86000, "country": "Australia", "age": 45},
-    {"id": 678901, "name": "José", "position": "Product Manager", "salary": 96000, "country": "Brazil", "age": 41},
+    {"id": 678901, "name": "Jose", "position": "Product Manager", "salary": 96000, "country": "Brazil", "age": 41},
     {"id": 789012, "name": "Friedrich", "position": "Product Manager", "salary": 92000, "country": "Germany", "age": 43},
     {"id": 890123, "name": "Kenji", "position": "Software Engineer", "salary": 89000, "country": "Japan", "age": 36},
     {"id": 901234, "name": "Oscar", "position": "Software Engineer", "salary": 84000, "country": "Australia", "age": 35},

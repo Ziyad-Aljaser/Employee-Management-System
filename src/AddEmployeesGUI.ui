@@ -13,6 +13,37 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <widget class="QLabel" name="background">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>0</y>
+     <width>1361</width>
+     <height>841</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/assets/EmployeeBackground.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>./assets/EmployeeBackground.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
   <widget class="QLabel" name="EmpLabel">
    <property name="geometry">
     <rect>
@@ -26,7 +57,7 @@
     <string notr="true">font: 87 26pt &quot;Segoe UI Black&quot;;</string>
    </property>
    <property name="text">
-    <string>Update Employee</string>
+    <string>Add New Employee</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -48,7 +79,7 @@
     <string notr="true">font: 87 15pt &quot;Segoe UI Black&quot;;</string>
    </property>
    <property name="text">
-    <string>Update Employee</string>
+    <string>Add Employee</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="EmpNameText">
@@ -65,6 +96,9 @@
    </property>
    <property name="autoFillBackground">
     <bool>false</bool>
+   </property>
+   <property name="placeholderText">
+    <string>Ex. John Davis</string>
    </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
@@ -111,6 +145,9 @@
      <height>41</height>
     </rect>
    </property>
+   <property name="placeholderText">
+    <string>Ex. HR</string>
+   </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
    </property>
@@ -146,8 +183,8 @@
    <property name="inputMask">
     <string/>
    </property>
-   <property name="frame">
-    <bool>true</bool>
+   <property name="placeholderText">
+    <string>Ex. 5000</string>
    </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
@@ -236,54 +273,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="background">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1342</width>
-     <height>833</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-image: url(:/newPrefix/EmployeeBackground.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>../../../Pictures/EmployeeBackground.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-   <property name="wordWrap">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <zorder>background</zorder>
-  <zorder>EmpLabel</zorder>
-  <zorder>EmpButton</zorder>
-  <zorder>EmpNameText</zorder>
-  <zorder>EmpNameLabel</zorder>
-  <zorder>EmpPositionLabel</zorder>
-  <zorder>EmpPositionText</zorder>
-  <zorder>EmpSalaryLabel</zorder>
-  <zorder>EmpSalaryText</zorder>
-  <zorder>GoBackButton</zorder>
-  <zorder>EmpCountryLabel</zorder>
-  <zorder>EmpCountryText</zorder>
-  <zorder>EmpAgeLabel</zorder>
-  <zorder>EmpAgeText</zorder>
  </widget>
- <resources>
-  <include location="../../../Downloads/BackgroundPic.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

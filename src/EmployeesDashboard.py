@@ -47,7 +47,7 @@ class EmployeesDashboard(QDialog):
 
         self.dataVisualizationButton.clicked.connect(self.switch_dialog_to_data_vis)
 
-        self.CSV_Import.clicked.connect(self.import__csv)
+        self.CSV_Import.clicked.connect(self.import_csv)
 
         self.CSV_Download.clicked.connect(self.download_csv)
 
@@ -208,8 +208,7 @@ class EmployeesDashboard(QDialog):
 
                 row += 1
 
-    def import__csv(self):
-        print("import__csv is called")
+    def import_csv(self):
         fileName, _ = QFileDialog.getOpenFileName(self, 'Open file', './')
 
         if fileName:

@@ -16,32 +16,32 @@
   <widget class="QLabel" name="background">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>-10</x>
      <y>0</y>
-     <width>1342</width>
-     <height>833</height>
+     <width>1361</width>
+     <height>841</height>
     </rect>
    </property>
    <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/newPrefix/EmployeeBackground.png);</string>
+    <string notr="true">background-image: url(:/assets/EmployeeBackground.png);</string>
    </property>
    <property name="text">
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../../../Pictures/EmployeeBackground.png</pixmap>
+    <pixmap>./assets/EmployeeBackground.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
-   </property>
-   <property name="wordWrap">
-    <bool>false</bool>
    </property>
   </widget>
   <widget class="QLabel" name="DataLabel">

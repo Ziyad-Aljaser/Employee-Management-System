@@ -1,7 +1,3 @@
-# TO DO:
-# 1- Apply the background and stretch it with the windows
-# 2- Apply data charts window
-
 import sys
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication

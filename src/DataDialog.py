@@ -9,7 +9,6 @@ import pandas as pd
 class DataDialog(QDialog):
     def __init__(self, employees_list, plot_type, parent=None):
         super(DataDialog, self).__init__(parent)
-        print("DataDialog class is called")
 
         self.employees_list = employees_list
         self.plot_type = plot_type
@@ -31,7 +30,6 @@ class DataDialog(QDialog):
             self.age_vs_salary_plot(data)
 
     def country_representation_plot(self, data):
-        print("country_representation_plot() is called")
         self.figure.clear()
 
         ax = self.figure.add_subplot(111)
