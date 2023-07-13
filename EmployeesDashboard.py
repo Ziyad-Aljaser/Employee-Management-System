@@ -1,7 +1,7 @@
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QTableWidget, QHeaderView,\
-     QTableWidgetItem, QAbstractItemView, QFileDialog, QMessageBox
+from PyQt5.QtWidgets import QDialog, QTableWidget, QHeaderView, \
+    QTableWidgetItem, QAbstractItemView, QFileDialog, QMessageBox
 from PyQt5.QtCore import QCoreApplication, Qt
 
 import csv
@@ -17,6 +17,8 @@ class EmployeesDashboard(QDialog):
     def __init__(self):
         super(EmployeesDashboard, self).__init__()
 
+        self.edit_col_index = None
+        self.delete_col_index = None
         self.widget = QtWidgets.QStackedWidget()
         self.widget.setFixedHeight(833)
         self.widget.setFixedWidth(1342)
@@ -63,8 +65,8 @@ class EmployeesDashboard(QDialog):
         if self.update_employee_window is None:
             # New window for updating employees
             self.update_employee_window = UpdateEmployeeWindow(self.widget,
-                                                          self.display_employees,
-                                                          self.employees_list)
+                                                               self.display_employees,
+                                                               self.employees_list)
             self.widget.addWidget(self.update_employee_window)
 
             self.index = self.index + 1
@@ -78,7 +80,7 @@ class EmployeesDashboard(QDialog):
         print("switch_dialog_to_data_visualization() is called")
         if self.data_visualization_window is None:
             self.data_visualization_window = DataVisualizationWindow(self.widget,
-                                                          self.employees_list)
+                                                                     self.employees_list)
             self.widget.addWidget(self.data_visualization_window)
 
             self.index = self.index + 1
@@ -137,8 +139,6 @@ class EmployeesDashboard(QDialog):
 
     # Update the displayed employees
     def display_employees(self):
-        # print("display_employees() is called")
-        # print(self.employees_list)
 
         # Used to check if employee list is empty or not
         if not self.employees_list:
@@ -160,13 +160,14 @@ class EmployeesDashboard(QDialog):
             for employee in self.employees_list:
                 id_item = QtWidgets.QTableWidgetItem(str(employee["id"]))
                 id_item.setToolTip(str(employee["id"]))
-                self.tableWidget.setItem(row, 0,id_item)
+                self.tableWidget.setItem(row, 0, id_item)
 
                 name_item = QtWidgets.QTableWidgetItem(str(employee["name"]))
                 name_item.setToolTip(str(employee["name"]))
                 self.tableWidget.setItem(row, 1, name_item)
 
-                position_item = QtWidgets.QTableWidgetItem(str(employee["position"]))
+                position_item = QtWidgets.QTableWidgetItem(
+                    str(employee["position"]))
                 position_item.setToolTip(str(employee["position"]))
                 self.tableWidget.setItem(row, 2, position_item)
 
@@ -187,10 +188,11 @@ class EmployeesDashboard(QDialog):
 
                 # Create a fix/delete buttons
                 edit_button = EditButton(self.tableWidget,
-                                             self.display_employees,
-                                             self.employees_list, row, employee)
+                                         self.display_employees,
+                                         self.employees_list, row, employee)
 
-                delete_button = DeleteButton(self.tableWidget, self.display_employees,
+                delete_button = DeleteButton(self.tableWidget,
+                                             self.display_employees,
                                              self.employees_list, row, employee)
 
                 # Passing the employee["id"] argument to the remove_employee method
@@ -202,7 +204,7 @@ class EmployeesDashboard(QDialog):
                 edit_button.edit_button.clicked.connect(
                     lambda _, employee_id=employee["id"]:
                     self.switch_dialog_to_update_emp(employee_id)
-                    )
+                )
 
                 row += 1
 
@@ -250,7 +252,9 @@ class EmployeesDashboard(QDialog):
 
                 # Used to write the data rows
                 for row in self.employees_list:
-                    csvwriter.writerow([row["id"], row["name"], row["position"], row["salary"], row["country"], row["age"]])
+                    csvwriter.writerow(
+                        [row["id"], row["name"], row["position"], row["salary"],
+                         row["country"], row["age"]])
 
             self.show_success_alert(filename)
 
