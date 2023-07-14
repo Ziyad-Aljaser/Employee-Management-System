@@ -4,13 +4,17 @@
   - [Description](#description)
   - [Built With](#built-with)
   - [Project Tree Structure](#project-tree-structure)
+- [Visuals](#visuals)
+- [Features](#features)
+- [Installation](#installation)
+
 
 
 # About The Project
 
 
 ## Project Title
-### Employee Management System
+**Employee Management System**
 
 
 ## Description
@@ -42,48 +46,53 @@ EmployeesSystem
 
 
 # Visuals
-### Employees Dashboard
+**Employees Dashboard**
 ![](Screenshots/EmployeesData-NoData.png)
 
-### Employees Dashboard With Fake Data
+**Employees Dashboard With Fake Data**
 ![](Screenshots/EmployeesData-Data.png)
 
-### Sorting Feature 
+**Sorting Feature**
 ![](Screenshots/EmployeesData-Sort.png)
 
-### Add New Employee Dashboard
+**Add New Employee Dashboard**
 ![](Screenshots/AddEmployee.png)
 
-### Update Existing Employee Dashboard
+**Update Existing Employee Dashboard**
 ![](Screenshots/UpdateEmployee.png)
 
-### Data Visualization Feature
+**Data Visualization Feature**
 ![](Screenshots/DataVisualization.png)
 
-### Country Representation
+**Country Representation**
 ![](Screenshots/DataVisualization-Country.png)
 
-### Salary Representation
+**Salary Representation**
 ![](Screenshots/DataVisualization-Salary.png)
 
-### Age Vs Salary Representation
+**Age Vs Salary Representation**
 ![](Screenshots/DataVisualization-AgeSalary.png)
 
 
 # Features
-* #### Intuitive Dashboard for Employee Data
+* **Intuitive Dashboard for Employee Data**
+
   The Graphical User Interface (GUI) features a comprehensive and user-friendly dashboard that presents all essential employee information, including Employee ID, Name, Position, Salary, Country, and Age. The dashboard's design facilitates easy understanding and navigation, ensuring smooth interaction for users.
 
-* #### CRUD Operations
+* **CRUD Operations**
+
   The GUI incorporates the Create, Read, Update, and Delete (CRUD) operations, thereby providing complete control over the employee data management. Users can easily add new employees (Create), view the existing employee information (Read), modify the details of existing employees (Update), and remove employee profiles from the system (Delete). This functionality forms the core of the management system and enables efficient data management.
 
-* #### Advanced Sorting
+* **Advanced Sorting**
+  
   The GUI provides an advanced sorting feature, which allows users to sort employee data based on Employee ID, Name, or Salary. This feature enables users to order the data as per their preference, aiding in easy access and analysis of the employee data.
 
-* #### CSV Data Import/Export
+* **CSV Data Import/Export**
+  
   The GUI includes a feature for importing and exporting employee data using CSV files. Users can effortlessly import data from a CSV file to the system or export the employee data into a CSV file. This feature provides a seamless connection with other software systems and facilitates smooth data transfer.
 
-* #### Data Visualization
+* **Data Visualization**
+  
   The GUI offers robust data visualization tools that include Country Representation, Salary Representation, and Age vs. Salary Representation. These visualizations help in analyzing and understanding complex data patterns and trends, supporting strategic decision-making. These tools enable users to gain meaningful insights from their data and to make informed decisions.
   
 
