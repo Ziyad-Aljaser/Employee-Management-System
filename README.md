@@ -14,7 +14,7 @@
 ### Employees Dashboard
 ![](Screenshots/EmployeesData-NoData.png)
 
-### Fake Data
+### Employees Dashboard With Fake Data
 ![](Screenshots/EmployeesData-Data.png)
 
 ### Sorting Feature 
