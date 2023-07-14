@@ -61,7 +61,6 @@ class EmployeesDashboard(QDialog):
 
     # Used to switch the window to the UpdateEmployeeWindow class
     def switch_dialog_to_update_emp(self, current_emp):
-        print("switch_dialog_to_update_emp() is called")
         if self.update_employee_window is None:
             # New window for updating employees
             self.update_employee_window = UpdateEmployeeWindow(self.widget,
