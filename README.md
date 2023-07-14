@@ -1,4 +1,14 @@
+# Table of Contents
+- [About The Project](#about-the-project)
+  - [Project Title](#project-title)
+  - [Description](#description)
+  - [Built With](#built-with)
+  - [Project Tree Structure](#project-tree-structure)
+
+
 # About The Project
+
+
 ## Project Title
 ### Employee Management System
 
@@ -31,7 +41,7 @@ EmployeesSystem
    ```
 
 
-## Visuals
+# Visuals
 ### Employees Dashboard
 ![](Screenshots/EmployeesData-NoData.png)
 
@@ -60,7 +70,7 @@ EmployeesSystem
 ![](Screenshots/DataVisualization-AgeSalary.png)
 
 
-## Features
+# Features
 * #### Intuitive Dashboard for Employee Data
   The Graphical User Interface (GUI) features a comprehensive and user-friendly dashboard that presents all essential employee information, including Employee ID, Name, Position, Salary, Country, and Age. The dashboard's design facilitates easy understanding and navigation, ensuring smooth interaction for users.
 
@@ -77,7 +87,7 @@ EmployeesSystem
   The GUI offers robust data visualization tools that include Country Representation, Salary Representation, and Age vs. Salary Representation. These visualizations help in analyzing and understanding complex data patterns and trends, supporting strategic decision-making. These tools enable users to gain meaningful insights from their data and to make informed decisions.
   
 
-## Installation
+# Installation
 - Install the dependencies following these steps : 
 
   - <>Code > Download ZIP > Open cmd/terminal in that location
