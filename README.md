@@ -1,16 +1,14 @@
-## Setup 
+![image](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
 
-- Install the dependencies following these steps : 
 
-  - <>Code > Download ZIP > Open cmd/terminal in that location
-  - Run these commands:
-    - `pip install virtualenv`
-    - `virtualenv venv`
-    - `venv\Scripts\activate`
-    - `pip install -r requirements.txt`
+## Project Title
+### Employee Management System
 
-## Screenshots
 
+## Description
+
+
+## Visuals
 ### Employees Dashboard
 ![](Screenshots/EmployeesData-NoData.png)
 
@@ -37,3 +35,14 @@
 
 ### Age Vs Salary Representation
 ![](Screenshots/DataVisualization-AgeSalary.png)
+
+
+## Installation
+- Install the dependencies following these steps : 
+
+  - <>Code > Download ZIP > Open cmd/terminal in that location
+  - Run these commands:
+    - `pip install virtualenv`
+    - `virtualenv venv`
+    - `venv\Scripts\activate`
+    - `pip install -r requirements.txt`
