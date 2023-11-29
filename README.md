@@ -19,7 +19,7 @@
 
 
 ## Description
-This project involves the development of an advanced Employee Management System (EMS) with a graphical user interface (GUI) leveraging the capabilities of Python programming language and the PyQt5 library. The project aims to streamline and enhance operational efficiency for businesses by providing a comprehensive dashboard for managing employee data.
+This project, which is developed from scratch, involves the creation of an advanced Employee Management System (EMS) with a graphical user interface (GUI) utilizing the capabilities of the Python programming language and the PyQt5 library. The project aims to improve operational efficiency in businesses by providing a comprehensive dashboard for managing employee data.
 
 The dashboard prominently features fields for Employee ID, Name, Position, Salary, Country, and Age. The EMS allows companies to perform a variety of actions such as view employee profiles, add new employee data, update existing employee information, and remove employee profiles as necessary. A unique functionality of this system is the ability to sort employees based on criteria such as their ID, name, or salary, thus offering greater convenience and efficiency in data handling.
 
